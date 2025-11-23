@@ -1,0 +1,62 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "user": "admin",
+      "pass": "1234",
+      "rol": "ADMIN"
+    },
+    {
+      "id": "2",
+      "user": "vendedor",
+      "pass": "1234",
+      "rol": "VENDEDOR"
+    },
+    {
+      "id": "3",
+      "user": "almacenero",
+      "pass": "1234",
+      "rol": "ALMACENERO"
+    },
+    {
+      "id": "4",
+      "user": "cajero",
+      "pass": "1234",
+      "rol": "CAJERO"
+    },
+    {
+      "id": "5",
+      "user": "supervisor",
+      "pass": "1234",
+      "rol": "SUPERVISOR"
+    }
+  ],
+  "productos": [
+    {
+      "nombre": "paracatemol",
+      "precio": "2",
+      "id": "2b99"
+    },
+    {
+      "nombre": "cetirizina",
+      "precio": "3",
+      "id": "6960"
+    }
+  ],
+  "clientes": [
+    {
+      "id": "4663",
+      "nombre": "2",
+      "dni": "2"
+    }
+  ],
+  "ventas": [
+    {
+      "id": "94e0",
+      "cliente": "2",
+      "producto": "2",
+      "cantidad": "2",
+      "fecha": "2025-11-23T16:19:11.765Z"
+    }
+  ]
+}
