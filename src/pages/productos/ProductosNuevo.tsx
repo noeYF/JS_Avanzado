@@ -1,13 +1,14 @@
 import { useState } from "react";
+import type { ProductoCreate } from "../../models/types";
 
 function ProductosNuevo() {
-  const [nombre, setNombre] = useState("");
-  const [precio, setPrecio] = useState("");
+  const [producto, setProducto] = useState<ProductoCreate>({
+    nombre: "",
+    precio: 0
+  });
 
-  const guardar = (e: React.FormEvent) => {
+  const guardar = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const producto = { nombre, precio };
 
     fetch("http://localhost:3001/productos", {
       method: "POST",
@@ -15,8 +16,11 @@ function ProductosNuevo() {
       body: JSON.stringify(producto)
     });
 
-    setNombre("");
-    setPrecio("");
+    setProducto({
+      nombre: "",
+      precio: 0
+    });
+
     alert("Producto guardado");
   };
 
@@ -28,15 +32,19 @@ function ProductosNuevo() {
         <input
           type="text"
           placeholder="Nombre del producto"
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
+          value={producto.nombre}
+          onChange={(e) =>
+            setProducto({ ...producto, nombre: e.target.value })
+          }
         />
 
         <input
           type="number"
           placeholder="Precio"
-          value={precio}
-          onChange={(e) => setPrecio(e.target.value)}
+          value={producto.precio}
+          onChange={(e) =>
+            setProducto({ ...producto, precio: Number(e.target.value) })
+          }
         />
 
         <button type="submit">Guardar</button>

@@ -1,29 +1,30 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import type { Cliente } from "../../models/types";
 
 function ClientesEditar() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [nombre, setNombre] = useState("");
-  const [dni, setDni] = useState("");
+  const [cliente, setCliente] = useState<Cliente>({
+    id: "",
+    nombre: "",
+    dni: ""
+  });
 
   useEffect(() => {
-    fetch(`http://localhost:3001/clientes/${id}`)
+    fetch(`http://localhost:3001/clientes/${String(id)}`)
       .then(res => res.json())
-      .then(data => {
-        setNombre(data.nombre);
-        setDni(data.dni);
-      });
+      .then((data: Cliente) => setCliente(data));
   }, [id]);
 
-  const actualizar = (e: React.FormEvent) => {
+  const actualizar = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    fetch(`http://localhost:3001/clientes/${id}`, {
+    fetch(`http://localhost:3001/clientes/${String(id)}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nombre, dni })
+      body: JSON.stringify(cliente)
     }).then(() => {
       alert("Cliente actualizado");
       navigate("/clientes/lista");
@@ -37,14 +38,18 @@ function ClientesEditar() {
       <form onSubmit={actualizar}>
         <input
           type="text"
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
+          value={cliente.nombre}
+          onChange={(e) =>
+            setCliente({ ...cliente, nombre: e.target.value })
+          }
         />
 
         <input
           type="text"
-          value={dni}
-          onChange={(e) => setDni(e.target.value)}
+          value={cliente.dni}
+          onChange={(e) =>
+            setCliente({ ...cliente, dni: e.target.value })
+          }
         />
 
         <button type="submit">Actualizar</button>

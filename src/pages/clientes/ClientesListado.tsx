@@ -1,33 +1,41 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-interface Cliente {
-  id: number;
-  nombre: string;
-  dni: string;
-}
+import type { Cliente } from "../../models/types";
 
 function ClientesListado() {
   const [clientes, setClientes] = useState<Cliente[]>([]);
   const navigate = useNavigate();
 
-  const cargar = () => {
-    fetch("http://localhost:3001/clientes")
-      .then(res => res.json())
-      .then(data => setClientes(data));
+  const cargar = async () => {
+    const res = await fetch("http://localhost:3001/clientes");
+    const data: Cliente[] = await res.json();
+    setClientes(data);
   };
 
   useEffect(() => {
     cargar();
   }, []);
 
-  const eliminar = (id: number) => {
-    fetch(`http://localhost:3001/clientes/${id}`, {
-      method: "DELETE"
-    }).then(() => cargar());
+  const eliminar = async (id: number | string) => {
+    try {
+      const res = await fetch(
+        `http://localhost:3001/clientes/${String(id)}`,
+        { method: "DELETE" }
+      );
+
+      if (!res.ok) {
+        throw new Error(`Status: ${res.status}`);
+      }
+
+      alert("Cliente eliminado correctamente");
+      cargar();
+    } catch (error) {
+      alert("Error al eliminar");
+      console.error(error);
+    }
   };
 
-  const editar = (id: number) => {
+  const editar = (id: number | string) => {
     navigate(`/clientes/editar/${id}`);
   };
 
@@ -51,7 +59,7 @@ function ClientesListado() {
               <td>{c.nombre}</td>
               <td>{c.dni}</td>
               <td>
-                <button onClick={() => editar(c.id)}>Editar</button>{" "}
+                <button onClick={() => editar(c.id)}>Editar</button>
                 <button onClick={() => eliminar(c.id)}>Eliminar</button>
               </td>
             </tr>

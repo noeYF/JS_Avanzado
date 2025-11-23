@@ -1,35 +1,41 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-interface Venta {
-  id: number;
-  cliente: string;
-  producto: string;
-  cantidad: string;
-  fecha: string;
-}
+import type { Venta } from "../../models/types";
 
 function VentasListado() {
   const [ventas, setVentas] = useState<Venta[]>([]);
   const navigate = useNavigate();
 
-  const cargar = () => {
-    fetch("http://localhost:3001/ventas")
-      .then(res => res.json())
-      .then(data => setVentas(data));
+  const cargar = async () => {
+    const res = await fetch("http://localhost:3001/ventas");
+    const data: Venta[] = await res.json();
+    setVentas(data);
   };
 
   useEffect(() => {
     cargar();
   }, []);
 
-  const eliminar = (id: number) => {
-    fetch(`http://localhost:3001/ventas/${id}`, {
-      method: "DELETE"
-    }).then(() => cargar());
+  const eliminar = async (id: string | number) => {
+    try {
+      const res = await fetch(
+        `http://localhost:3001/ventas/${id}`,
+        { method: "DELETE" }
+      );
+
+      if (!res.ok) {
+        throw new Error(`Status: ${res.status}`);
+      }
+
+      alert("Venta eliminada correctamente");
+      cargar();
+    } catch (error) {
+      alert("Error al eliminar");
+      console.error(error);
+    }
   };
 
-  const editar = (id: number) => {
+  const editar = (id: string | number) => {
     navigate(`/ventas/editar/${id}`);
   };
 
@@ -55,9 +61,9 @@ function VentasListado() {
               <td>{v.cliente}</td>
               <td>{v.producto}</td>
               <td>{v.cantidad}</td>
-              <td>{new Date(v.fecha).toLocaleDateString()}</td>
+              <td>{v.fecha}</td>
               <td>
-                <button onClick={() => editar(v.id)}>Editar</button>{" "}
+                <button onClick={() => editar(v.id)}>Editar</button>
                 <button onClick={() => eliminar(v.id)}>Eliminar</button>
               </td>
             </tr>

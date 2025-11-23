@@ -1,24 +1,35 @@
 import { useState } from "react";
+import type { VentaCreate } from "../../models/types";
 
 function VentasNuevo() {
-  const [cliente, setCliente] = useState("");
-  const [producto, setProducto] = useState("");
-  const [cantidad, setCantidad] = useState("");
+  const [venta, setVenta] = useState<VentaCreate>({
+    cliente: "",
+    producto: "",
+    cantidad: 0,
+    fecha: ""
+  });
 
-  const guardar = (e: React.FormEvent) => {
+  const guardar = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const venta = { cliente, producto, cantidad, fecha: new Date().toISOString() };
+    const nuevaVenta: VentaCreate = {
+      ...venta,
+      fecha: new Date().toISOString()
+    };
 
     fetch("http://localhost:3001/ventas", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(venta)
+      body: JSON.stringify(nuevaVenta)
     });
 
-    setCliente("");
-    setProducto("");
-    setCantidad("");
+    setVenta({
+      cliente: "",
+      producto: "",
+      cantidad: 0,
+      fecha: ""
+    });
+
     alert("Venta registrada");
   };
 
@@ -29,23 +40,29 @@ function VentasNuevo() {
       <form onSubmit={guardar}>
         <input
           type="text"
-          placeholder="Nombre del cliente"
-          value={cliente}
-          onChange={(e) => setCliente(e.target.value)}
+          placeholder="Cliente"
+          value={venta.cliente}
+          onChange={(e) =>
+            setVenta({ ...venta, cliente: e.target.value })
+          }
         />
 
         <input
           type="text"
           placeholder="Producto"
-          value={producto}
-          onChange={(e) => setProducto(e.target.value)}
+          value={venta.producto}
+          onChange={(e) =>
+            setVenta({ ...venta, producto: e.target.value })
+          }
         />
 
         <input
           type="number"
           placeholder="Cantidad"
-          value={cantidad}
-          onChange={(e) => setCantidad(e.target.value)}
+          value={venta.cantidad}
+          onChange={(e) =>
+            setVenta({ ...venta, cantidad: Number(e.target.value) })
+          }
         />
 
         <button type="submit">Guardar</button>

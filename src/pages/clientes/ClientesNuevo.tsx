@@ -1,13 +1,14 @@
 import { useState } from "react";
+import type { ClienteCreate } from "../../models/types";
 
 function ClientesNuevo() {
-  const [nombre, setNombre] = useState("");
-  const [dni, setDni] = useState("");
+  const [cliente, setCliente] = useState<ClienteCreate>({
+    nombre: "",
+    dni: ""
+  });
 
-  const guardar = (e: React.FormEvent) => {
+  const guardar = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const cliente = { nombre, dni };
 
     fetch("http://localhost:3001/clientes", {
       method: "POST",
@@ -15,8 +16,11 @@ function ClientesNuevo() {
       body: JSON.stringify(cliente)
     });
 
-    setNombre("");
-    setDni("");
+    setCliente({
+      nombre: "",
+      dni: ""
+    });
+
     alert("Cliente guardado");
   };
 
@@ -28,15 +32,19 @@ function ClientesNuevo() {
         <input
           type="text"
           placeholder="Nombre del cliente"
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
+          value={cliente.nombre}
+          onChange={(e) =>
+            setCliente({ ...cliente, nombre: e.target.value })
+          }
         />
 
         <input
           type="text"
           placeholder="DNI"
-          value={dni}
-          onChange={(e) => setDni(e.target.value)}
+          value={cliente.dni}
+          onChange={(e) =>
+            setCliente({ ...cliente, dni: e.target.value })
+          }
         />
 
         <button type="submit">Guardar</button>

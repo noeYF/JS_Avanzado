@@ -1,29 +1,30 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import type { Producto } from "../../models/types";
 
 function ProductosEditar() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [nombre, setNombre] = useState("");
-  const [precio, setPrecio] = useState("");
+  const [producto, setProducto] = useState<Producto>({
+    id: "",
+    nombre: "",
+    precio: 0
+  });
 
   useEffect(() => {
-    fetch(`http://localhost:3001/productos/${id}`)
+    fetch(`http://localhost:3001/productos/${String(id)}`)
       .then(res => res.json())
-      .then(data => {
-        setNombre(data.nombre);
-        setPrecio(data.precio);
-      });
+      .then((data: Producto) => setProducto(data));
   }, [id]);
 
-  const actualizar = (e: React.FormEvent) => {
+  const actualizar = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    fetch(`http://localhost:3001/productos/${id}`, {
+    fetch(`http://localhost:3001/productos/${String(id)}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nombre, precio })
+      body: JSON.stringify(producto)
     }).then(() => {
       alert("Producto actualizado");
       navigate("/productos/lista");
@@ -37,14 +38,18 @@ function ProductosEditar() {
       <form onSubmit={actualizar}>
         <input
           type="text"
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
+          value={producto.nombre}
+          onChange={(e) =>
+            setProducto({ ...producto, nombre: e.target.value })
+          }
         />
 
         <input
           type="number"
-          value={precio}
-          onChange={(e) => setPrecio(e.target.value)}
+          value={producto.precio}
+          onChange={(e) =>
+            setProducto({ ...producto, precio: Number(e.target.value) })
+          }
         />
 
         <button type="submit">Actualizar</button>

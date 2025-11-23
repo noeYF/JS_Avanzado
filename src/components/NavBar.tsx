@@ -1,10 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
+import type { Usuario } from "../models/types";
 
 function NavBar() {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("usuario") || "{}");
 
-  const cerrarSesion = () => {
+  const user: Usuario = JSON.parse(
+    localStorage.getItem("usuario") || "{}"
+  );
+
+  const cerrarSesion = (): void => {
     localStorage.removeItem("usuario");
     navigate("/");
   };

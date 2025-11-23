@@ -1,53 +1,39 @@
 import { useEffect, useState } from "react";
+import type  { Producto, Cliente, Usuario, Venta } from "../../models/types";
 
 function Dashboard() {
-  const [productos, setProductos] = useState(0);
-  const [clientes, setClientes] = useState(0);
-  const [usuarios, setUsuarios] = useState(0);
-  const [ventas, setVentas] = useState(0);
+  const [totalProductos, setTotalProductos] = useState<number>(0);
+  const [totalClientes, setTotalClientes] = useState<number>(0);
+  const [totalUsuarios, setTotalUsuarios] = useState<number>(0);
+  const [totalVentas, setTotalVentas] = useState<number>(0);
 
   useEffect(() => {
     fetch("http://localhost:3001/productos")
       .then(res => res.json())
-      .then(data => setProductos(data.length));
+      .then((data: Producto[]) => setTotalProductos(data.length));
 
     fetch("http://localhost:3001/clientes")
       .then(res => res.json())
-      .then(data => setClientes(data.length));
+      .then((data: Cliente[]) => setTotalClientes(data.length));
 
     fetch("http://localhost:3001/usuarios")
       .then(res => res.json())
-      .then(data => setUsuarios(data.length));
+      .then((data: Usuario[]) => setTotalUsuarios(data.length));
 
     fetch("http://localhost:3001/ventas")
       .then(res => res.json())
-      .then(data => setVentas(data.length));
+      .then((data: Venta[]) => setTotalVentas(data.length));
   }, []);
 
   return (
-    <div className="container">
-      <h1>Dashboard - Botica Estrella</h1>
+    <div className="dashboard">
+      <h2>Panel Principal</h2>
 
-      <div className="card-grid">
-        <div className="card">
-          <h3>Productos</h3>
-          <p>{productos}</p>
-        </div>
-
-        <div className="card">
-          <h3>Clientes</h3>
-          <p>{clientes}</p>
-        </div>
-
-        <div className="card">
-          <h3>Usuarios</h3>
-          <p>{usuarios}</p>
-        </div>
-
-        <div className="card">
-          <h3>Ventas</h3>
-          <p>{ventas}</p>
-        </div>
+      <div className="cards">
+        <div className="card">Productos: {totalProductos}</div>
+        <div className="card">Clientes: {totalClientes}</div>
+        <div className="card">Usuarios: {totalUsuarios}</div>
+        <div className="card">Ventas: {totalVentas}</div>
       </div>
     </div>
   );

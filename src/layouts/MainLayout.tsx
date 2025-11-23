@@ -5,7 +5,7 @@ import NavBar from "../components/NavBar";
 function MainLayout() {
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useEffect((): void => {
     const usuario = localStorage.getItem("usuario");
 
     if (!usuario) {

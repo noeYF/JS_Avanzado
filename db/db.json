@@ -39,8 +39,13 @@
     },
     {
       "nombre": "cetirizina",
-      "precio": "3",
+      "precio": 4,
       "id": "6960"
+    },
+    {
+      "id": "",
+      "nombre": "1",
+      "precio": 1
     }
   ],
   "clientes": [
@@ -57,6 +62,27 @@
       "producto": "2",
       "cantidad": "2",
       "fecha": "2025-11-23T16:19:11.765Z"
+    },
+    {
+      "id": "",
+      "cliente": "1",
+      "producto": "1",
+      "cantidad": 1,
+      "fecha": "2025-11-23T18:21:10.066Z"
+    },
+    {
+      "id": "",
+      "cliente": "5",
+      "producto": "5",
+      "cantidad": 4,
+      "fecha": "2025-11-23T18:27:23.927Z"
+    },
+    {
+      "id": "36b1",
+      "cliente": "4",
+      "producto": "4",
+      "cantidad": 23,
+      "fecha": "2025-11-23T18:47:57.192Z"
     }
   ]
 }

@@ -1,36 +1,32 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import type { Venta } from "../../models/types";
 
 function VentasEditar() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [cliente, setCliente] = useState("");
-  const [producto, setProducto] = useState("");
-  const [cantidad, setCantidad] = useState("");
+  const [venta, setVenta] = useState<Venta>({
+    id: "",
+    cliente: "",
+    producto: "",
+    cantidad: 0,
+    fecha: ""
+  });
 
   useEffect(() => {
     fetch(`http://localhost:3001/ventas/${id}`)
       .then(res => res.json())
-      .then(data => {
-        setCliente(data.cliente);
-        setProducto(data.producto);
-        setCantidad(data.cantidad);
-      });
+      .then((data: Venta) => setVenta(data));
   }, [id]);
 
-  const actualizar = (e: React.FormEvent) => {
+  const actualizar = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    fetch(`http://localhost:3001/ventas/${id}`, {
+    fetch(`http://localhost:3001/ventas/${String(id)}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        cliente,
-        producto,
-        cantidad,
-        fecha: new Date().toISOString()
-      })
+      body: JSON.stringify(venta)
     }).then(() => {
       alert("Venta actualizada");
       navigate("/ventas/lista");
@@ -44,20 +40,26 @@ function VentasEditar() {
       <form onSubmit={actualizar}>
         <input
           type="text"
-          value={cliente}
-          onChange={(e) => setCliente(e.target.value)}
+          value={venta.cliente}
+          onChange={(e) =>
+            setVenta({ ...venta, cliente: e.target.value })
+          }
         />
 
         <input
           type="text"
-          value={producto}
-          onChange={(e) => setProducto(e.target.value)}
+          value={venta.producto}
+          onChange={(e) =>
+            setVenta({ ...venta, producto: e.target.value })
+          }
         />
 
         <input
           type="number"
-          value={cantidad}
-          onChange={(e) => setCantidad(e.target.value)}
+          value={venta.cantidad}
+          onChange={(e) =>
+            setVenta({ ...venta, cantidad: Number(e.target.value) })
+          }
         />
 
         <button type="submit">Actualizar</button>
