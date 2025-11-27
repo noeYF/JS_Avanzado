@@ -1,51 +1,63 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import type { Usuario } from "../../models/types";
+import { Link, useNavigate } from "react-router-dom";
+import { useUsuarios } from "../../hook/DatosUsuarios";
 
 function LoginPage() {
   const navigate = useNavigate();
+  const { usuarios } = useUsuarios();
 
-  const [user, setUser] = useState<string>("");
-  const [pass, setPass] = useState<string>("");
+  const [user, setUser] = useState("");
+  const [pass, setPass] = useState("");
+  const [error, setError] = useState("");
 
-  const login = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const response = await fetch(
-      `http://localhost:3001/usuarios?user=${user}&pass=${pass}`
+    const usuarioEncontrado = usuarios.find(
+      (u) => u.user === user && u.pass === pass
     );
 
-    const data: Usuario[] = await response.json();
-
-    if (data.length > 0) {
-      localStorage.setItem("usuario", JSON.stringify(data[0]));
-      navigate("/dashboard");
+    if (usuarioEncontrado) {
+      localStorage.setItem("usuario", JSON.stringify(usuarioEncontrado));
+      navigate("/dashboard"); // redirige al dashboard
     } else {
-      alert("Datos incorrectos");
+      setError("Usuario o contraseña incorrectos");
     }
   };
 
   return (
-    <div className="login-box">
-      <h2>Iniciar Sesión</h2>
+    <div className="login-container">
+      <div className="login-box">
+        <h2>Iniciar Sesión</h2>
 
-      <form onSubmit={login}>
-        <input
-          type="text"
-          placeholder="Usuario"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-        />
+        <form onSubmit={handleLogin}>
+          <input
+            type="text"
+            placeholder="Usuario"
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+            required
+          />
 
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={pass}
-          onChange={(e) => setPass(e.target.value)}
-        />
+          <input
+            type="password"
+            placeholder="Contraseña"
+            value={pass}
+            onChange={(e) => setPass(e.target.value)}
+            required
+          />
 
-        <button type="submit">Ingresar</button>
-      </form>
+          <button type="submit" className="btn-login">
+            Ingresar
+          </button>
+
+          {error && <p className="error">{error}</p>}
+
+          <p className="crear-cuenta">
+            ¿No tienes cuenta? <Link to="/CrearCuenta">Crear Cuenta</Link>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }

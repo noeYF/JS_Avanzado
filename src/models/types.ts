@@ -1,10 +1,10 @@
 // src/models/types.ts
-
+//defini de una ves los cuatro tipos de personas que abra para que no aya confuciones
 export interface Usuario {
   id: number;
   user: string;
   pass: string;
-  rol: string;
+  rol: "ADMIN" | "ALMACENERO" | "VENDEDOR" | "SUPERVISOR";
 }
 
 export interface Producto {
@@ -14,14 +14,12 @@ export interface Producto {
 }
 export type ProductoCreate = Omit<Producto, "id">;
 
-
 export interface Cliente {
   id: number | string;
   nombre: string;
   dni: string;
 }
 export type ClienteCreate = Omit<Cliente, "id">;
-
 
 export interface Venta {
   id: number | string;
@@ -31,4 +29,3 @@ export interface Venta {
   fecha: string;
 }
 export type VentaCreate = Omit<Venta, "id">;
-

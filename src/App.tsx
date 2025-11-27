@@ -4,8 +4,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 
 // Pages
-import LoginPage from "./pages/login/LoginPage";
+/* import LoginPage from "./pages/login/LoginPage"; */
 import Dashboard from "./pages/dashboard/Dashboard";
+import Inicio from "./pages/Inicio";
+import LoginPage from "./pages/login/LoginPage";
+import CrearUsuario from "./pages/login/crearCuenta";
 
 // Productos
 import ProductosIndex from "./pages/productos/ProductosIndex";
@@ -32,12 +35,11 @@ import VentasEditar from "./pages/ventas/VentasEditar";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <LoginPage />,
-  },
-  {
-    path: "/",
     element: <MainLayout />,
     children: [
+      { path: "", element: <Inicio /> },
+      { path: "/login", element: <LoginPage /> },
+      {path:"/CrearCuenta",element:<CrearUsuario/>},
       { path: "dashboard", element: <Dashboard /> },
 
       {
@@ -70,7 +72,6 @@ const router = createBrowserRouter([
           { path: "nuevo", element: <VentasNuevo /> },
           { path: "buscar", element: <VentasBuscar /> },
           { path: "editar/:id", element: <VentasEditar /> },
-
         ],
       },
     ],

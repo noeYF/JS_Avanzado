@@ -1,6 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import type { Usuario } from "../models/types";
 
+//dejenlo esto cambie de Nav pero todavia falta definir como van interactuar con todos 
+//no lo borren por si acaso 
+
 function NavBar() {
   const navigate = useNavigate();
 
@@ -11,10 +14,10 @@ function NavBar() {
   const cerrarSesion = (): void => {
     localStorage.removeItem("usuario");
     navigate("/");
-  };
+  }; 
 
   return (
-    <nav className="navbar">
+     <nav className="navbar">
       <Link to="/dashboard">Dashboard</Link>
 
       {(user.rol === "ADMIN" || user.rol === "ALMACENERO") && (
@@ -30,7 +33,7 @@ function NavBar() {
       )}
 
       <button onClick={cerrarSesion}>Salir</button>
-    </nav>
+    </nav> 
   );
 }
 
