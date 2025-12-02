@@ -33,54 +33,539 @@
   ],
   "productos": [
     {
-      "nombre": "paracatemol",
-      "precio": "2",
-      "id": "2b99"
+      "id": "p004",
+      "nombre": "Omeprazol 20mg",
+      "precio": 4.2
     },
     {
-      "nombre": "cetirizina",
-      "precio": 4,
-      "id": "6960"
+      "id": "p005",
+      "nombre": "Leche Entera 1L",
+      "precio": 4.5
     },
     {
-      "id": "",
-      "nombre": "1",
+      "id": "p006",
+      "nombre": "Pan Baguette",
+      "precio": 1.5
+    },
+    {
+      "id": "p007",
+      "nombre": "Azúcar Rubia 1kg",
+      "precio": 3
+    },
+    {
+      "id": "p008",
+      "nombre": "Arroz Superior 1kg",
+      "precio": 4.2
+    },
+    {
+      "id": "p009",
+      "nombre": "Tallarines 500g",
+      "precio": 3.8
+    },
+    {
+      "id": "p010",
+      "nombre": "Aceite Vegetal 1L",
+      "precio": 8.5
+    },
+    {
+      "id": "p011",
+      "nombre": "Jabón de Tocador",
+      "precio": 1.8
+    },
+    {
+      "id": "p012",
+      "nombre": "Shampoo 350ml",
+      "precio": 10.5
+    },
+    {
+      "id": "p013",
+      "nombre": "Papel Higiénico 4un",
+      "precio": 6
+    },
+    {
+      "id": "p014",
+      "nombre": "Bolsa de Detergente 1kg",
+      "precio": 9.8
+    },
+    {
+      "id": "p015",
+      "nombre": "Lavavajillas Líquido",
+      "precio": 5.5
+    },
+    {
+      "id": "p016",
+      "nombre": "Cepillo Dental",
+      "precio": 2.2
+    },
+    {
+      "id": "p017",
+      "nombre": "Crema Dental 90g",
+      "precio": 3.6
+    },
+    {
+      "id": "p018",
+      "nombre": "Desodorante Roll-On",
+      "precio": 7.5
+    },
+    {
+      "id": "p019",
+      "nombre": "Alcohol Medicinal 1L",
+      "precio": 6.5
+    },
+    {
+      "id": "p020",
+      "nombre": "Agua Oxigenada 120ml",
+      "precio": 3
+    },
+    {
+      "id": "p021",
+      "nombre": "Manzanas 1kg",
+      "precio": 5.2
+    },
+    {
+      "id": "p022",
+      "nombre": "Plátanos 1kg",
+      "precio": 4
+    },
+    {
+      "id": "p023",
+      "nombre": "Naranjas 1kg",
+      "precio": 4.8
+    },
+    {
+      "id": "p024",
+      "nombre": "Tomates 1kg",
+      "precio": 5
+    },
+    {
+      "id": "p025",
+      "nombre": "Cebollas 1kg",
+      "precio": 3.2
+    },
+    {
+      "id": "p026",
+      "nombre": "Papas 1kg",
+      "precio": 2.9
+    },
+    {
+      "id": "p027",
+      "nombre": "Zanahorias 1kg",
+      "precio": 3
+    },
+    {
+      "id": "p028",
+      "nombre": "Huevos Docena",
+      "precio": 8.5
+    },
+    {
+      "id": "p029",
+      "nombre": "Pollo Entero",
+      "precio": 18
+    },
+    {
+      "id": "p030",
+      "nombre": "Carne Molida 500g",
+      "precio": 12
+    },
+    {
+      "id": "p031",
+      "nombre": "Café Instantáneo 50g",
+      "precio": 4.5
+    },
+    {
+      "id": "p032",
+      "nombre": "Té en Sobres 25un",
+      "precio": 3.8
+    },
+    {
+      "id": "p033",
+      "nombre": "Gaseosa 1.5L",
+      "precio": 6
+    },
+    {
+      "id": "p034",
+      "nombre": "Agua Mineral 2.5L",
+      "precio": 3.5
+    },
+    {
+      "id": "p035",
+      "nombre": "Jugo en Caja 1L",
+      "precio": 5.5
+    },
+    {
+      "id": "p036",
+      "nombre": "Cereal 400g",
+      "precio": 9
+    },
+    {
+      "id": "p037",
+      "nombre": "Galletas Surtidas",
+      "precio": 4.5
+    },
+    {
+      "id": "p038",
+      "nombre": "Chocolate Barra",
+      "precio": 3.2
+    },
+    {
+      "id": "p039",
+      "nombre": "Helado de Vainilla 1L",
+      "precio": 12
+    },
+    {
+      "id": "p040",
+      "nombre": "Mantequilla 200g",
+      "precio": 6.8
+    },
+    {
+      "id": "p041",
+      "nombre": "Mouse Inalámbrico",
+      "precio": 35
+    },
+    {
+      "id": "p042",
+      "nombre": "Teclado USB",
+      "precio": 45
+    },
+    {
+      "id": "p043",
+      "nombre": "Audífonos Económicos",
+      "precio": 25
+    },
+    {
+      "id": "p044",
+      "nombre": "Cable USB Tipo C",
+      "precio": 18
+    },
+    {
+      "id": "p045",
+      "nombre": "USB 32GB",
+      "precio": 22
+    },
+    {
+      "id": "p046",
+      "nombre": "Cargador de Celular",
+      "precio": 28
+    },
+    {
+      "id": "p047",
+      "nombre": "Funda para Celular",
+      "precio": 15
+    },
+    {
+      "id": "p048",
+      "nombre": "Protector de Pantalla",
+      "precio": 10
+    },
+    {
+      "id": "p049",
+      "nombre": "Soporte para Celular",
+      "precio": 12
+    },
+    {
+      "id": "p050",
+      "nombre": "Parlante Bluetooth",
+      "precio": 55
+    },
+    {
+      "id": "p051",
+      "nombre": "Cuaderno A4",
+      "precio": 6
+    },
+    {
+      "id": "p052",
+      "nombre": "Lapicero Azul",
+      "precio": 1.2
+    },
+    {
+      "id": "p053",
+      "nombre": "Resaltadores Pack",
+      "precio": 8
+    },
+    {
+      "id": "p054",
+      "nombre": "Corrector Líquido",
+      "precio": 3.8
+    },
+    {
+      "id": "p055",
+      "nombre": "Tijeras",
+      "precio": 4.5
+    },
+    {
+      "id": "p056",
+      "nombre": "Regla 30cm",
+      "precio": 2.5
+    },
+    {
+      "id": "p057",
+      "nombre": "Pega en Barra",
+      "precio": 3
+    },
+    {
+      "id": "p058",
+      "nombre": "Papel Bond 500 hojas",
+      "precio": 18
+    },
+    {
+      "id": "p059",
+      "nombre": "Carpeta de Plástico",
+      "precio": 4
+    },
+    {
+      "id": "p060",
+      "nombre": "Folder Manilla",
       "precio": 1
+    },
+    {
+      "id": "p061",
+      "nombre": "Gorra Deportiva",
+      "precio": 25
+    },
+    {
+      "id": "p062",
+      "nombre": "Polera Unisex",
+      "precio": 35
+    },
+    {
+      "id": "p063",
+      "nombre": "Pantalón Jeans",
+      "precio": 65
+    },
+    {
+      "id": "p064",
+      "nombre": "Medias Pack 3",
+      "precio": 12
+    },
+    {
+      "id": "p065",
+      "nombre": "Casaca Impermeable",
+      "precio": 95
+    },
+    {
+      "id": "p066",
+      "nombre": "Zapatillas Deportivas",
+      "precio": 160
+    },
+    {
+      "id": "p067",
+      "nombre": "Sandalias",
+      "precio": 20
+    },
+    {
+      "id": "p068",
+      "nombre": "Cinturón Casual",
+      "precio": 25
+    },
+    {
+      "id": "p069",
+      "nombre": "Lentes de Sol",
+      "precio": 30
+    },
+    {
+      "id": "p070",
+      "nombre": "Mochila Escolar",
+      "precio": 70
+    },
+    {
+      "id": "p071",
+      "nombre": "Tostadora",
+      "precio": 85
+    },
+    {
+      "id": "p072",
+      "nombre": "Licuadora",
+      "precio": 130
+    },
+    {
+      "id": "p073",
+      "nombre": "Hervidor Eléctrico",
+      "precio": 55
+    },
+    {
+      "id": "p074",
+      "nombre": "Plancha de Ropa",
+      "precio": 75
+    },
+    {
+      "id": "p075",
+      "nombre": "Ventilador",
+      "precio": 95
+    },
+    {
+      "id": "p076",
+      "nombre": "Microondas",
+      "precio": 350
+    },
+    {
+      "id": "p078",
+      "nombre": "Cafetera Eléctrica",
+      "precio": 150
+    },
+    {
+      "id": "p079",
+      "nombre": "Batidora",
+      "precio": 90
+    },
+    {
+      "id": "p080",
+      "nombre": "Freidora de Aire",
+      "precio": 260
+    },
+    {
+      "id": "p081",
+      "nombre": "Pelota de Fútbol",
+      "precio": 45
+    },
+    {
+      "id": "p082",
+      "nombre": "Guantes Deportivos",
+      "precio": 30
+    },
+    {
+      "id": "p083",
+      "nombre": "Cuerda para Saltar",
+      "precio": 18
+    },
+    {
+      "id": "p084",
+      "nombre": "Esterilla de Yoga",
+      "precio": 55
+    },
+    {
+      "id": "p085",
+      "nombre": "Mancuernas 5kg",
+      "precio": 85
+    },
+    {
+      "id": "p086",
+      "nombre": "Casco para Bicicleta",
+      "precio": 95
+    },
+    {
+      "id": "p087",
+      "nombre": "Botella Deportiva",
+      "precio": 20
+    },
+    {
+      "id": "p088",
+      "nombre": "Short Deportivo",
+      "precio": 25
+    },
+    {
+      "id": "p089",
+      "nombre": "Banda Elástica",
+      "precio": 15
+    },
+    {
+      "id": "p090",
+      "nombre": "Step Aeróbico",
+      "precio": 120
+    },
+    {
+      "id": "p092",
+      "nombre": "Sábana 2 plazas",
+      "precio": 45
+    },
+    {
+      "id": "p093",
+      "nombre": "Frazada",
+      "precio": 65
+    },
+    {
+      "id": "p094",
+      "nombre": "Cortina de Baño",
+      "precio": 35
+    },
+    {
+      "id": "p095",
+      "nombre": "Almohada",
+      "precio": 30
+    },
+    {
+      "id": "p096",
+      "nombre": "Jabón Líquido 1L",
+      "precio": 15
+    },
+    {
+      "id": "p097",
+      "nombre": "Ambientador",
+      "precio": 12
+    },
+    {
+      "id": "p098",
+      "nombre": "Escoba",
+      "precio": 10
+    },
+    {
+      "id": "p099",
+      "nombre": "Recogedor",
+      "precio": 8
+    },
+    {
+      "id": "p100",
+      "nombre": "Trapeador",
+      "precio": 15
+    },
+    {
+      "id": "p101",
+      "nombre": "nombre",
+      "precio": 111
+    },
+    {
+      "id": "p102",
+      "nombre": "don jose",
+      "precio": 4
+    },
+    {
+      "id": "p103",
+      "nombre": "jair porras palpa ",
+      "precio": 14
+    },
+    {
+      "id": "p104",
+      "nombre": "don jua n",
+      "precio": 5
     }
   ],
   "clientes": [
     {
       "id": "4663",
-      "nombre": "2",
-      "dni": "2"
+      "nombre": "Juan",
+      "dni": "74185296"
+    },
+    {
+      "id": "c882",
+      "nombre": "Maria",
+      "dni": "12345678"
     }
   ],
   "ventas": [
     {
       "id": "94e0",
-      "cliente": "2",
-      "producto": "2",
-      "cantidad": "2",
+      "cliente": "4663",
+      "producto": "2b99",
+      "cantidad": 2,
       "fecha": "2025-11-23T16:19:11.765Z"
     },
     {
-      "id": "",
-      "cliente": "1",
-      "producto": "1",
+      "id": "v100",
+      "cliente": "4663",
+      "producto": "6960",
       "cantidad": 1,
       "fecha": "2025-11-23T18:21:10.066Z"
     },
     {
-      "id": "",
-      "cliente": "5",
-      "producto": "5",
+      "id": "v200",
+      "cliente": "c882",
+      "producto": "a123",
       "cantidad": 4,
       "fecha": "2025-11-23T18:27:23.927Z"
     },
     {
       "id": "36b1",
-      "cliente": "4",
-      "producto": "4",
+      "cliente": "c882",
+      "producto": "6960",
       "cantidad": 23,
       "fecha": "2025-11-23T18:47:57.192Z"
     }

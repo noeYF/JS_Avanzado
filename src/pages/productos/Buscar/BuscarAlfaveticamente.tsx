@@ -1,8 +1,8 @@
+import React from "react";
+import { useProductos } from "../../../hook/DatosProductos";
 import { useNavigate } from "react-router-dom";
-import { useProductos } from "../../hook/DatosProductos";
 
-function ProductosListado() {
-  //definimos que vamos a traer de los productos
+const BuscarAlfabetico = () => {
   const { eliminarProducto, productos } = useProductos();
   const navigate = useNavigate();
 
@@ -10,10 +10,13 @@ function ProductosListado() {
     navigate(`/productos/editar/${id}`);
   };
 
-  return (
-    <div className="table-box">
-      <h2>Lista de Productos</h2>
+  // Orden alfabético A → Z
+  const productosOrdenados = [...productos].sort((a, b) =>
+    a.nombre.localeCompare(b.nombre)
+  );
 
+  return (
+    <div>
       <table>
         <thead>
           <tr>
@@ -24,7 +27,7 @@ function ProductosListado() {
           </tr>
         </thead>
         <tbody>
-          {productos.map((p) => (
+          {productosOrdenados.map((p) => (
             <tr key={p.id}>
               <td>{p.id}</td>
               <td>{p.nombre}</td>
@@ -51,6 +54,6 @@ function ProductosListado() {
       </table>
     </div>
   );
-}
+};
 
-export default ProductosListado;
+export default BuscarAlfabetico;

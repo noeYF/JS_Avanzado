@@ -1,27 +1,27 @@
 import { useState } from "react";
-import type { ProductoCreate } from "../../models/types";
+import type { Producto } from "../../models/types";
+import { useProductos } from "../../hook/DatosProductos";
 
 function ProductosNuevo() {
-  const [producto, setProducto] = useState<ProductoCreate>({
+  const { crearProducto, productos } = useProductos();
+  const [producto, setProducto] = useState<Producto>({
+    id: "",
     nombre: "",
-    precio: 0
+    precio: 0,
   });
 
-  const guardar = (e: React.FormEvent<HTMLFormElement>) => {
+  const generarID = (): string => {
+    const ultimoProducto = productos.map((p) => Number(p.id!.slice(1)));
+    const max = Math.max(...ultimoProducto);
+    return `p${max + 1}`;
+  };
+
+  const guardar = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    fetch("http://localhost:3001/productos", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(producto)
-    });
-
-    setProducto({
-      nombre: "",
-      precio: 0
-    });
-
+    const nuevoProducto = { ...producto, id: generarID() };
+    await crearProducto(nuevoProducto);
     alert("Producto guardado");
+    setProducto({ id: "", nombre: "", precio: 0 });
   };
 
   return (
@@ -33,9 +33,7 @@ function ProductosNuevo() {
           type="text"
           placeholder="Nombre del producto"
           value={producto.nombre}
-          onChange={(e) =>
-            setProducto({ ...producto, nombre: e.target.value })
-          }
+          onChange={(e) => setProducto({ ...producto, nombre: e.target.value })}
         />
 
         <input

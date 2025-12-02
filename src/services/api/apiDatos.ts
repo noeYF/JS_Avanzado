@@ -1,4 +1,3 @@
-
 import { handleResponse } from "./handleResponse";
 
 /*
@@ -25,5 +24,13 @@ export class ApiDatos {
       method: "DELETE",
     });
     await handleResponse(response);
+  }
+  static async patch<T, B>(url: string, body: B): Promise<T> {
+    const response = await fetch(url, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    return handleResponse<T>(response);
   }
 }

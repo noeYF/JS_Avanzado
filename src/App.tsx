@@ -2,6 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Layout
 import MainLayout from "./layouts/MainLayout";
+import BuscarIndex from "./layouts/Productos/Buscar/BuscarIndex";
+import ProductosIndex from "./layouts/Productos/ProductosIndex";
 
 // Pages
 /* import LoginPage from "./pages/login/LoginPage"; */
@@ -11,11 +13,14 @@ import LoginPage from "./pages/login/LoginPage";
 import CrearUsuario from "./pages/login/crearCuenta";
 
 // Productos
-import ProductosIndex from "./pages/productos/ProductosIndex";
+
 import ProductosListado from "./pages/productos/ProductosListado";
 import ProductosNuevo from "./pages/productos/ProductosNuevo";
-import ProductosBuscar from "./pages/productos/ProductosBuscar";
 import ProductosEditar from "./pages/productos/ProductosEditar";
+//Productos-buscar
+import BuscarAlfabeticamente from "./pages/productos/Buscar/BuscarAlfaveticamente";
+import BuscarEspecificamente from "./pages/productos/Buscar/BuscarEspecificamente";
+import BuscarPrecio from "./pages/productos/Buscar/BuscarPrecios";
 
 // Clientes
 import ClientesIndex from "./pages/clientes/ClientesIndex";
@@ -31,7 +36,6 @@ import VentasNuevo from "./pages/ventas/VentasNuevo";
 import VentasBuscar from "./pages/ventas/VentasBuscar";
 import VentasEditar from "./pages/ventas/VentasEditar";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -39,16 +43,31 @@ const router = createBrowserRouter([
     children: [
       { path: "", element: <Inicio /> },
       { path: "/login", element: <LoginPage /> },
-      {path:"/CrearCuenta",element:<CrearUsuario/>},
+      { path: "/CrearCuenta", element: <CrearUsuario /> },
       { path: "dashboard", element: <Dashboard /> },
 
       {
         path: "productos",
         element: <ProductosIndex />,
         children: [
+          { path: "", element: <ProductosListado /> },
           { path: "lista", element: <ProductosListado /> },
           { path: "nuevo", element: <ProductosNuevo /> },
-          { path: "buscar", element: <ProductosBuscar /> },
+          {
+            path: "buscar",
+            element: <BuscarIndex />,
+            children: [
+              {
+                path: "buscarAlfaveticamente",
+                element: <BuscarAlfabeticamente />,
+              },
+              { path: "buscarPrecio", element: <BuscarPrecio /> },
+              {
+                path: "buscarEspecificamente",
+                element: <BuscarEspecificamente />,
+              },
+            ],
+          },
           { path: "editar/:id", element: <ProductosEditar /> },
         ],
       },

@@ -1,18 +1,32 @@
+import React, { useState } from "react";
+import { useProductos } from "../../../hook/DatosProductos";
 import { useNavigate } from "react-router-dom";
-import { useProductos } from "../../hook/DatosProductos";
 
-function ProductosListado() {
-  //definimos que vamos a traer de los productos
-  const { eliminarProducto, productos } = useProductos();
+const BuscarEspecificamente = () => {
+  const [busqueda, setBusqueda] = useState("");
+  const { productos, eliminarProducto } = useProductos();
   const navigate = useNavigate();
 
   const editar = (id: string) => {
     navigate(`/productos/editar/${id}`);
   };
 
+  // Filtrar productos según lo escrito
+  const productosFiltrados = productos.filter((p) =>
+    p.nombre.toLowerCase().includes(busqueda.toLowerCase())
+  );
+
   return (
-    <div className="table-box">
-      <h2>Lista de Productos</h2>
+    <div>
+      <h2>Buscar Producto</h2>
+
+      <input
+        type="text"
+        placeholder="Buscar por nombre..."
+        value={busqueda}
+        onChange={(e) => setBusqueda(e.target.value)}
+        style={{ marginBottom: "15px", padding: "5px", width: "250px" }}
+      />
 
       <table>
         <thead>
@@ -24,7 +38,7 @@ function ProductosListado() {
           </tr>
         </thead>
         <tbody>
-          {productos.map((p) => (
+          {productosFiltrados.map((p) => (
             <tr key={p.id}>
               <td>{p.id}</td>
               <td>{p.nombre}</td>
@@ -49,8 +63,12 @@ function ProductosListado() {
           ))}
         </tbody>
       </table>
+
+      {productosFiltrados.length === 0 && (
+        <p>No se encontró ningún producto con ese nombre.</p>
+      )}
     </div>
   );
-}
+};
 
-export default ProductosListado;
+export default BuscarEspecificamente;

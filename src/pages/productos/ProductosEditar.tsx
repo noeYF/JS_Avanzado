@@ -1,34 +1,41 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import type { Producto } from "../../models/types";
+import type { ProductoCreate } from "../../models/types";
+import { useProductos } from "../../hook/DatosProductos";
 
 function ProductosEditar() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { traerProducto, modificarProducto } = useProductos();
 
-  const [producto, setProducto] = useState<Producto>({
-    id: "",
+  const [producto, setProducto] = useState<ProductoCreate>({
     nombre: "",
-    precio: 0
+    precio: 0,
   });
 
   useEffect(() => {
-    fetch(`http://localhost:3001/productos/${String(id)}`)
-      .then(res => res.json())
-      .then((data: Producto) => setProducto(data));
-  }, [id]);
+    const cargarProducto = async () => {
+      if (!id) return;
 
-  const actualizar = (e: React.FormEvent<HTMLFormElement>) => {
+      const data = await traerProducto(id);
+      if (data) setProducto(data);
+    };
+
+    cargarProducto();
+  }, [id, traerProducto]);
+
+  const actualizar = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    fetch(`http://localhost:3001/productos/${String(id)}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(producto)
-    }).then(() => {
+    if (!id) return;
+
+    try {
+      await modificarProducto(id, producto);
       alert("Producto actualizado");
       navigate("/productos/lista");
-    });
+    } catch (err) {
+      console.log("Error al actualizar el producto:", err);
+    }
   };
 
   return (
@@ -39,9 +46,7 @@ function ProductosEditar() {
         <input
           type="text"
           value={producto.nombre}
-          onChange={(e) =>
-            setProducto({ ...producto, nombre: e.target.value })
-          }
+          onChange={(e) => setProducto({ ...producto, nombre: e.target.value })}
         />
 
         <input
