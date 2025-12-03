@@ -1,18 +1,23 @@
+import React from "react";
+import { useClientes } from "../../../hook/DatosClientes";
 import { useNavigate } from "react-router-dom";
-import { useClientes } from "../../hook/DatosClientes";
 
-function ClientesListado() {
+const BuscarClientesAlfabetico = () => {
   const { eliminarCliente, Clientes } = useClientes();
   const navigate = useNavigate();
 
-  const editar = (id: number | string) => {
+  const editar = (id: string) => {
     navigate(`/clientes/editar/${id}`);
   };
 
-  return (
-    <div className="table-box">
-      <h2>Lista de Clientes</h2>
+  // Orden alfabético A → Z por nombre
+  const clientesOrdenados = [...Clientes].sort((a, b) =>
+    a.nombre.localeCompare(b.nombre)
+  );
 
+  return (
+    <div>
+      <h2>Clientes Ordenados Alfabéticamente</h2>
       <table>
         <thead>
           <tr>
@@ -23,7 +28,7 @@ function ClientesListado() {
           </tr>
         </thead>
         <tbody>
-          {Clientes.map((c) => (
+          {clientesOrdenados.map((c) => (
             <tr key={c.id}>
               <td>{c.id}</td>
               <td>{c.nombre}</td>
@@ -34,7 +39,7 @@ function ClientesListado() {
                   onClick={() => {
                     if (
                       window.confirm(
-                        `¿Estás seguro de eliminar el producto ${c.nombre}?`
+                        `¿Estás seguro de eliminar al cliente ${c.nombre}?`
                       )
                     ) {
                       eliminarCliente(c.id);
@@ -50,6 +55,6 @@ function ClientesListado() {
       </table>
     </div>
   );
-}
+};
 
-export default ClientesListado;
+export default BuscarClientesAlfabetico;

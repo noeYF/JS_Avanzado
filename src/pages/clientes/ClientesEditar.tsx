@@ -1,34 +1,42 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import type { Cliente } from "../../models/types";
+import { useClientes } from "../../hook/DatosClientes";
 
 function ClientesEditar() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { traerCliente, modificarCliente } = useClientes();
 
   const [cliente, setCliente] = useState<Cliente>({
     id: "",
     nombre: "",
-    dni: ""
+    dni: "",
   });
 
   useEffect(() => {
-    fetch(`http://localhost:3001/clientes/${String(id)}`)
-      .then(res => res.json())
-      .then((data: Cliente) => setCliente(data));
-  }, [id]);
+    const cargarCliente = async () => {
+      if (!id) return;
 
-  const actualizar = (e: React.FormEvent<HTMLFormElement>) => {
+      const data = await traerCliente(id);
+      if (data) setCliente(data);
+    };
+
+    cargarCliente();
+  }, [id, traerCliente]);
+
+  const actualizar = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    fetch(`http://localhost:3001/clientes/${String(id)}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(cliente)
-    }).then(() => {
+    if (!id) return;
+
+    try {
+      await modificarCliente(id, cliente);
       alert("Cliente actualizado");
       navigate("/clientes/lista");
-    });
+    } catch (err) {
+      console.log("Error al actualizar el cliente:", err);
+    }
   };
 
   return (
@@ -39,17 +47,15 @@ function ClientesEditar() {
         <input
           type="text"
           value={cliente.nombre}
-          onChange={(e) =>
-            setCliente({ ...cliente, nombre: e.target.value })
-          }
+          onChange={(e) => setCliente({ ...cliente, nombre: e.target.value })}
+          required
         />
 
         <input
           type="text"
           value={cliente.dni}
-          onChange={(e) =>
-            setCliente({ ...cliente, dni: e.target.value })
-          }
+          onChange={(e) => setCliente({ ...cliente, dni: e.target.value })}
+          required
         />
 
         <button type="submit">Actualizar</button>

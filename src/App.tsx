@@ -2,40 +2,47 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Layout
 import MainLayout from "./layouts/MainLayout";
-import BuscarIndex from "./layouts/Productos/Buscar/BuscarIndex";
+//
+//Layout-productos
+//
 import ProductosIndex from "./layouts/Productos/ProductosIndex";
+import BuscarIndexProductos from "./layouts/Productos/Buscar/BuscarIndex";
+// Productos
+import ProductosListado from "./pages/productos/ProductosListado";
+import ProductosNuevo from "./pages/productos/ProductosNuevo";
+import ProductosEditar from "./pages/productos/ProductosEditar";
+//Productos-buscar
+import BuscarAlfabeticamenteProductos from "./pages/productos/Buscar/BuscarAlfaveticamente";
+import BuscarEspecificamenteProductos from "./pages/productos/Buscar/BuscarEspecificamente";
+import BuscarPrecioProductos from "./pages/productos/Buscar/BuscarPrecios";
+
+//
+//Layout-Clientes
+//
+import ClientesIndex from "./layouts/Clientes/ClientesIndex";
+import BuscarIndexClientes from "./layouts/Clientes/Buscar/BuscarIndex";
+//Clientes
+import ClientesListado from "./pages/clientes/ClientesListado";
+import ClientesNuevo from "./pages/clientes/ClientesNuevo";
+import ClientesEditar from "./pages/clientes/ClientesEditar";
+//Clientes-buscar
+import BuscarAlfabeticamenteClientes from "./pages/clientes/Buscar/BuscarAlfaveticamente";
+import BuscarEspecificamenteClientes from "./pages/clientes/Buscar/BuscarEspecificamente";
 
 // Pages
-/* import LoginPage from "./pages/login/LoginPage"; */
 import Dashboard from "./pages/dashboard/Dashboard";
 import Inicio from "./pages/Inicio";
 import LoginPage from "./pages/login/LoginPage";
 import CrearUsuario from "./pages/login/crearCuenta";
 
-// Productos
-
-import ProductosListado from "./pages/productos/ProductosListado";
-import ProductosNuevo from "./pages/productos/ProductosNuevo";
-import ProductosEditar from "./pages/productos/ProductosEditar";
-//Productos-buscar
-import BuscarAlfabeticamente from "./pages/productos/Buscar/BuscarAlfaveticamente";
-import BuscarEspecificamente from "./pages/productos/Buscar/BuscarEspecificamente";
-import BuscarPrecio from "./pages/productos/Buscar/BuscarPrecios";
-
-// Clientes
-import ClientesIndex from "./pages/clientes/ClientesIndex";
-import ClientesListado from "./pages/clientes/ClientesListado";
-import ClientesNuevo from "./pages/clientes/ClientesNuevo";
-import ClientesBuscar from "./pages/clientes/ClientesBuscar";
-import ClientesEditar from "./pages/clientes/ClientesEditar";
-
 // Ventas
 import VentasIndex from "./pages/ventas/VentasIndex";
 import VentasListado from "./pages/ventas/VentasListado";
-import VentasNuevo from "./pages/ventas/VentasNuevo";
+import VentasNuevo from "./pages/ventas/NuevaVenta/ingresarDNI";
 import VentasBuscar from "./pages/ventas/VentasBuscar";
-import VentasEditar from "./pages/ventas/VentasEditar";
+import VentaGenerar from "./pages/ventas/NuevaVenta/generarVenta";
 
+//test
 const router = createBrowserRouter([
   {
     path: "/",
@@ -55,16 +62,17 @@ const router = createBrowserRouter([
           { path: "nuevo", element: <ProductosNuevo /> },
           {
             path: "buscar",
-            element: <BuscarIndex />,
+            element: <BuscarIndexProductos />,
             children: [
+              { path: "", element: <BuscarEspecificamenteProductos /> },
               {
                 path: "buscarAlfaveticamente",
-                element: <BuscarAlfabeticamente />,
+                element: <BuscarAlfabeticamenteProductos />,
               },
-              { path: "buscarPrecio", element: <BuscarPrecio /> },
+              { path: "buscarPrecio", element: <BuscarPrecioProductos /> },
               {
                 path: "buscarEspecificamente",
-                element: <BuscarEspecificamente />,
+                element: <BuscarEspecificamenteProductos />,
               },
             ],
           },
@@ -76,10 +84,25 @@ const router = createBrowserRouter([
         path: "clientes",
         element: <ClientesIndex />,
         children: [
+          { path: "", element: <ClientesListado /> },
           { path: "lista", element: <ClientesListado /> },
           { path: "nuevo", element: <ClientesNuevo /> },
-          { path: "buscar", element: <ClientesBuscar /> },
           { path: "editar/:id", element: <ClientesEditar /> },
+          {
+            path: "buscar",
+            element: <BuscarIndexClientes />,
+            children: [
+              { path: "", element: <BuscarEspecificamenteClientes /> },
+              {
+                path: "buscarAlfaveticamente",
+                element: <BuscarAlfabeticamenteClientes />,
+              },
+              {
+                path: "buscarEspecificamente",
+                element: <BuscarEspecificamenteClientes />,
+              },
+            ],
+          },
         ],
       },
 
@@ -87,10 +110,12 @@ const router = createBrowserRouter([
         path: "ventas",
         element: <VentasIndex />,
         children: [
+          { path: "", element: <VentasListado /> },
           { path: "lista", element: <VentasListado /> },
           { path: "nuevo", element: <VentasNuevo /> },
+          { path: "generarVenta", element: <VentaGenerar /> },
+
           { path: "buscar", element: <VentasBuscar /> },
-          { path: "editar/:id", element: <VentasEditar /> },
         ],
       },
     ],

@@ -33,11 +33,6 @@
   ],
   "productos": [
     {
-      "id": "p004",
-      "nombre": "Omeprazol 20mg",
-      "precio": 4.2
-    },
-    {
       "id": "p005",
       "nombre": "Leche Entera 1L",
       "precio": 4.5
@@ -530,44 +525,1335 @@
   ],
   "clientes": [
     {
-      "id": "4663",
-      "nombre": "Juan",
-      "dni": "74185296"
+      "id": "c0004",
+      "nombre": "Cliente488",
+      "dni": "92000121"
     },
     {
-      "id": "c882",
-      "nombre": "Maria",
-      "dni": "12345678"
+      "id": "c0005",
+      "nombre": "Cliente5",
+      "dni": "30338512"
+    },
+    {
+      "id": "c0006",
+      "nombre": "Cliente6",
+      "dni": "59395850"
+    },
+    {
+      "id": "c0007",
+      "nombre": "Cliente7",
+      "dni": "78616933"
+    },
+    {
+      "id": "c0008",
+      "nombre": "Cliente8",
+      "dni": "93740194"
+    },
+    {
+      "id": "c0009",
+      "nombre": "Cliente9",
+      "dni": "46821706"
+    },
+    {
+      "id": "c0010",
+      "nombre": "Cliente10",
+      "dni": "43467439"
+    },
+    {
+      "id": "c0011",
+      "nombre": "Cliente11",
+      "dni": "90496138"
+    },
+    {
+      "id": "c0012",
+      "nombre": "Cliente12",
+      "dni": "29315146"
+    },
+    {
+      "id": "c0013",
+      "nombre": "Cliente13",
+      "dni": "79504513"
+    },
+    {
+      "id": "c0014",
+      "nombre": "Cliente14",
+      "dni": "40143121"
+    },
+    {
+      "id": "c0015",
+      "nombre": "Cliente15",
+      "dni": "61136137"
+    },
+    {
+      "id": "c0016",
+      "nombre": "Cliente16",
+      "dni": "05170800"
+    },
+    {
+      "id": "c0017",
+      "nombre": "Cliente17",
+      "dni": "75445907"
+    },
+    {
+      "id": "c0018",
+      "nombre": "Cliente18",
+      "dni": "30822885"
+    },
+    {
+      "id": "c0019",
+      "nombre": "Cliente19",
+      "dni": "11084650"
+    },
+    {
+      "id": "c0020",
+      "nombre": "Cliente20",
+      "dni": "62087641"
+    },
+    {
+      "id": "c0021",
+      "nombre": "Cliente21",
+      "dni": "76388349"
+    },
+    {
+      "id": "c0022",
+      "nombre": "Cliente22",
+      "dni": "21519291"
+    },
+    {
+      "id": "c0023",
+      "nombre": "Cliente23",
+      "dni": "69614765"
+    },
+    {
+      "id": "c0024",
+      "nombre": "Cliente24",
+      "dni": "53229073"
+    },
+    {
+      "id": "c0025",
+      "nombre": "Cliente25",
+      "dni": "30782314"
+    },
+    {
+      "id": "c0026",
+      "nombre": "Cliente26",
+      "dni": "68300347"
+    },
+    {
+      "id": "c0027",
+      "nombre": "Cliente27",
+      "dni": "77433114"
+    },
+    {
+      "id": "c0028",
+      "nombre": "Cliente28",
+      "dni": "09914488"
+    },
+    {
+      "id": "c0029",
+      "nombre": "Cliente29",
+      "dni": "74798292"
+    },
+    {
+      "id": "c0030",
+      "nombre": "Cliente30",
+      "dni": "34626802"
+    },
+    {
+      "id": "c0031",
+      "nombre": "Cliente31",
+      "dni": "49509289"
+    },
+    {
+      "id": "c0032",
+      "nombre": "Cliente32",
+      "dni": "33375842"
+    },
+    {
+      "id": "c0033",
+      "nombre": "Cliente33",
+      "dni": "12026480"
+    },
+    {
+      "id": "c0034",
+      "nombre": "Cliente34",
+      "dni": "73377462"
+    },
+    {
+      "id": "c0035",
+      "nombre": "Cliente35",
+      "dni": "38716360"
+    },
+    {
+      "id": "c0036",
+      "nombre": "Cliente36",
+      "dni": "71611087"
+    },
+    {
+      "id": "c0037",
+      "nombre": "Cliente37",
+      "dni": "27282937"
+    },
+    {
+      "id": "c0038",
+      "nombre": "Cliente38",
+      "dni": "82562583"
+    },
+    {
+      "id": "c0039",
+      "nombre": "Cliente39",
+      "dni": "16195377"
+    },
+    {
+      "id": "c0040",
+      "nombre": "Cliente40",
+      "dni": "57525470"
+    },
+    {
+      "id": "c0041",
+      "nombre": "Cliente41",
+      "dni": "64459613"
+    },
+    {
+      "id": "c0042",
+      "nombre": "Cliente42",
+      "dni": "83114834"
+    },
+    {
+      "id": "c0043",
+      "nombre": "Cliente43",
+      "dni": "48697656"
+    },
+    {
+      "id": "c0044",
+      "nombre": "Cliente44",
+      "dni": "25124155"
+    },
+    {
+      "id": "c0045",
+      "nombre": "Cliente45",
+      "dni": "69349287"
+    },
+    {
+      "id": "c0046",
+      "nombre": "Cliente46",
+      "dni": "64336356"
+    },
+    {
+      "id": "c0047",
+      "nombre": "Cliente47",
+      "dni": "95952317"
+    },
+    {
+      "id": "c0048",
+      "nombre": "Cliente48",
+      "dni": "69636457"
+    },
+    {
+      "id": "c0049",
+      "nombre": "Cliente49",
+      "dni": "66827465"
+    },
+    {
+      "id": "c0050",
+      "nombre": "Cliente50",
+      "dni": "16482055"
+    },
+    {
+      "id": "c0051",
+      "nombre": "Cliente51",
+      "dni": "11307882"
+    },
+    {
+      "id": "c0052",
+      "nombre": "Cliente52",
+      "dni": "73733999"
+    },
+    {
+      "id": "c0053",
+      "nombre": "Cliente53",
+      "dni": "54313249"
+    },
+    {
+      "id": "c0054",
+      "nombre": "Cliente54",
+      "dni": "64770400"
+    },
+    {
+      "id": "c0055",
+      "nombre": "Cliente55",
+      "dni": "39838845"
+    },
+    {
+      "id": "c0056",
+      "nombre": "Cliente56",
+      "dni": "35648876"
+    },
+    {
+      "id": "c0057",
+      "nombre": "Cliente57",
+      "dni": "41951835"
+    },
+    {
+      "id": "c0058",
+      "nombre": "Cliente58",
+      "dni": "42972398"
+    },
+    {
+      "id": "c0059",
+      "nombre": "Cliente59",
+      "dni": "34272796"
+    },
+    {
+      "id": "c0060",
+      "nombre": "Cliente60",
+      "dni": "44325657"
+    },
+    {
+      "id": "c0061",
+      "nombre": "Cliente61",
+      "dni": "01360197"
+    },
+    {
+      "id": "c0062",
+      "nombre": "Cliente62",
+      "dni": "72110990"
+    },
+    {
+      "id": "c0063",
+      "nombre": "Cliente63",
+      "dni": "01915121"
+    },
+    {
+      "id": "c0064",
+      "nombre": "Cliente64",
+      "dni": "28522065"
+    },
+    {
+      "id": "c0065",
+      "nombre": "Cliente65",
+      "dni": "69719462"
+    },
+    {
+      "id": "c0066",
+      "nombre": "Cliente66",
+      "dni": "48513850"
+    },
+    {
+      "id": "c0067",
+      "nombre": "Cliente67",
+      "dni": "69103658"
+    },
+    {
+      "id": "c0068",
+      "nombre": "Cliente68",
+      "dni": "89078222"
+    },
+    {
+      "id": "c0069",
+      "nombre": "Cliente69",
+      "dni": "66166151"
+    },
+    {
+      "id": "c0070",
+      "nombre": "Cliente70",
+      "dni": "87505706"
+    },
+    {
+      "id": "c0071",
+      "nombre": "Cliente71",
+      "dni": "70688218"
+    },
+    {
+      "id": "c0072",
+      "nombre": "Cliente72",
+      "dni": "86192557"
+    },
+    {
+      "id": "c0073",
+      "nombre": "Cliente73",
+      "dni": "71600497"
+    },
+    {
+      "id": "c0074",
+      "nombre": "Cliente74",
+      "dni": "31438230"
+    },
+    {
+      "id": "c0075",
+      "nombre": "Cliente75",
+      "dni": "33933579"
+    },
+    {
+      "id": "c0076",
+      "nombre": "Cliente76",
+      "dni": "27848468"
+    },
+    {
+      "id": "c0077",
+      "nombre": "Cliente77",
+      "dni": "19327891"
+    },
+    {
+      "id": "c0078",
+      "nombre": "Cliente78",
+      "dni": "70005609"
+    },
+    {
+      "id": "c0079",
+      "nombre": "Cliente79",
+      "dni": "92626754"
+    },
+    {
+      "id": "c0080",
+      "nombre": "Cliente80",
+      "dni": "93488028"
+    },
+    {
+      "id": "c0081",
+      "nombre": "Cliente81",
+      "dni": "67776114"
+    },
+    {
+      "id": "c0082",
+      "nombre": "Cliente82",
+      "dni": "22824321"
+    },
+    {
+      "id": "c0083",
+      "nombre": "Cliente83",
+      "dni": "52630770"
+    },
+    {
+      "id": "c0084",
+      "nombre": "Cliente84",
+      "dni": "21277062"
+    },
+    {
+      "id": "c0085",
+      "nombre": "Cliente85",
+      "dni": "07262086"
+    },
+    {
+      "id": "c0086",
+      "nombre": "Cliente86",
+      "dni": "62130322"
+    },
+    {
+      "id": "c0087",
+      "nombre": "Cliente87",
+      "dni": "50212962"
+    },
+    {
+      "id": "c0088",
+      "nombre": "Cliente88",
+      "dni": "01216078"
+    },
+    {
+      "id": "c0089",
+      "nombre": "Cliente89",
+      "dni": "59393574"
+    },
+    {
+      "id": "c0090",
+      "nombre": "Cliente90",
+      "dni": "62938166"
+    },
+    {
+      "id": "c0091",
+      "nombre": "Cliente91",
+      "dni": "50681919"
+    },
+    {
+      "id": "c0092",
+      "nombre": "Cliente92",
+      "dni": "99063978"
+    },
+    {
+      "id": "c0093",
+      "nombre": "Cliente93",
+      "dni": "71462218"
+    },
+    {
+      "id": "c0094",
+      "nombre": "Cliente94",
+      "dni": "35608367"
+    },
+    {
+      "id": "c0095",
+      "nombre": "Cliente95",
+      "dni": "46139082"
+    },
+    {
+      "id": "c0096",
+      "nombre": "Cliente96",
+      "dni": "05049617"
+    },
+    {
+      "id": "c0097",
+      "nombre": "Cliente97",
+      "dni": "21027705"
+    },
+    {
+      "id": "c0098",
+      "nombre": "Cliente98",
+      "dni": "91058891"
+    },
+    {
+      "id": "c0099",
+      "nombre": "Cliente99",
+      "dni": "96159625"
+    },
+    {
+      "id": "c0100",
+      "nombre": "Cliente100",
+      "dni": "64681931"
+    },
+    {
+      "id": "c0101",
+      "nombre": "Cliente101",
+      "dni": "06254192"
+    },
+    {
+      "id": "c0102",
+      "nombre": "Cliente102",
+      "dni": "12846887"
+    },
+    {
+      "id": "c0103",
+      "nombre": "Cliente103",
+      "dni": "52365205"
+    },
+    {
+      "id": "c0104",
+      "nombre": "Cliente104",
+      "dni": "84322928"
+    },
+    {
+      "id": "c0105",
+      "nombre": "Cliente105",
+      "dni": "41417423"
+    },
+    {
+      "id": "c0106",
+      "nombre": "Cliente106",
+      "dni": "32214351"
+    },
+    {
+      "id": "c0107",
+      "nombre": "Cliente107",
+      "dni": "57436765"
+    },
+    {
+      "id": "c0108",
+      "nombre": "Cliente108",
+      "dni": "81341733"
+    },
+    {
+      "id": "c0109",
+      "nombre": "Cliente109",
+      "dni": "15310012"
+    },
+    {
+      "id": "c0110",
+      "nombre": "Cliente110",
+      "dni": "32762302"
+    },
+    {
+      "id": "c0111",
+      "nombre": "Cliente111",
+      "dni": "76580869"
+    },
+    {
+      "id": "c0112",
+      "nombre": "Cliente112",
+      "dni": "27412211"
+    },
+    {
+      "id": "c0113",
+      "nombre": "Cliente113",
+      "dni": "10912997"
+    },
+    {
+      "id": "c0114",
+      "nombre": "Cliente114",
+      "dni": "70327194"
+    },
+    {
+      "id": "c0115",
+      "nombre": "Cliente115",
+      "dni": "04399223"
+    },
+    {
+      "id": "c0116",
+      "nombre": "Cliente116",
+      "dni": "94437827"
+    },
+    {
+      "id": "c0117",
+      "nombre": "Cliente117",
+      "dni": "40122791"
+    },
+    {
+      "id": "c0118",
+      "nombre": "Cliente118",
+      "dni": "81344179"
+    },
+    {
+      "id": "c0119",
+      "nombre": "Cliente119",
+      "dni": "14604719"
+    },
+    {
+      "id": "c0120",
+      "nombre": "Cliente120",
+      "dni": "81416274"
+    },
+    {
+      "id": "c0121",
+      "nombre": "Cliente121",
+      "dni": "10412376"
+    },
+    {
+      "id": "c0122",
+      "nombre": "Cliente122",
+      "dni": "10105176"
+    },
+    {
+      "id": "c0123",
+      "nombre": "Cliente123",
+      "dni": "13456647"
+    },
+    {
+      "id": "c0124",
+      "nombre": "Cliente124",
+      "dni": "66582778"
+    },
+    {
+      "id": "c0125",
+      "nombre": "Cliente125",
+      "dni": "46233555"
+    },
+    {
+      "id": "c0126",
+      "nombre": "Cliente126",
+      "dni": "27952928"
+    },
+    {
+      "id": "c0127",
+      "nombre": "Cliente127",
+      "dni": "20694793"
+    },
+    {
+      "id": "c0128",
+      "nombre": "Cliente128",
+      "dni": "10574511"
+    },
+    {
+      "id": "c0129",
+      "nombre": "Cliente129",
+      "dni": "90879364"
+    },
+    {
+      "id": "c0130",
+      "nombre": "Cliente130",
+      "dni": "51679710"
+    },
+    {
+      "id": "c0131",
+      "nombre": "Cliente131",
+      "dni": "38915259"
+    },
+    {
+      "id": "c0132",
+      "nombre": "Cliente132",
+      "dni": "73966017"
+    },
+    {
+      "id": "c0133",
+      "nombre": "Cliente133",
+      "dni": "33731346"
+    },
+    {
+      "id": "c0134",
+      "nombre": "Cliente134",
+      "dni": "35125297"
+    },
+    {
+      "id": "c0135",
+      "nombre": "Cliente135",
+      "dni": "60265880"
+    },
+    {
+      "id": "c0136",
+      "nombre": "Cliente136",
+      "dni": "84941340"
+    },
+    {
+      "id": "c0137",
+      "nombre": "Cliente137",
+      "dni": "55702188"
+    },
+    {
+      "id": "c0138",
+      "nombre": "Cliente138",
+      "dni": "92857438"
+    },
+    {
+      "id": "c0139",
+      "nombre": "Cliente139",
+      "dni": "35061896"
+    },
+    {
+      "id": "c0140",
+      "nombre": "Cliente140",
+      "dni": "65381865"
+    },
+    {
+      "id": "c0141",
+      "nombre": "Cliente141",
+      "dni": "41953640"
+    },
+    {
+      "id": "c0142",
+      "nombre": "Cliente142",
+      "dni": "97876987"
+    },
+    {
+      "id": "c0143",
+      "nombre": "Cliente143",
+      "dni": "06964240"
+    },
+    {
+      "id": "c0144",
+      "nombre": "Cliente144",
+      "dni": "74592552"
+    },
+    {
+      "id": "c0145",
+      "nombre": "Cliente145",
+      "dni": "52546249"
+    },
+    {
+      "id": "c0146",
+      "nombre": "Cliente146",
+      "dni": "31568106"
+    },
+    {
+      "id": "c0147",
+      "nombre": "Cliente147",
+      "dni": "42917115"
+    },
+    {
+      "id": "c0148",
+      "nombre": "Cliente148",
+      "dni": "43793185"
+    },
+    {
+      "id": "c0149",
+      "nombre": "Cliente149",
+      "dni": "54816477"
+    },
+    {
+      "id": "c0150",
+      "nombre": "Cliente150",
+      "dni": "33395699"
+    },
+    {
+      "id": "c0151",
+      "nombre": "Cliente151",
+      "dni": "34842532"
+    },
+    {
+      "id": "c0152",
+      "nombre": "Cliente152",
+      "dni": "83486831"
+    },
+    {
+      "id": "c0153",
+      "nombre": "Cliente153",
+      "dni": "05151523"
+    },
+    {
+      "id": "c0154",
+      "nombre": "Cliente154",
+      "dni": "97311589"
+    },
+    {
+      "id": "c0155",
+      "nombre": "Cliente155",
+      "dni": "56870852"
+    },
+    {
+      "id": "c0156",
+      "nombre": "Cliente156",
+      "dni": "30976903"
+    },
+    {
+      "id": "c0157",
+      "nombre": "Cliente157",
+      "dni": "37581090"
+    },
+    {
+      "id": "c0158",
+      "nombre": "Cliente158",
+      "dni": "71102765"
+    },
+    {
+      "id": "c0159",
+      "nombre": "Cliente159",
+      "dni": "88453063"
+    },
+    {
+      "id": "c0160",
+      "nombre": "Cliente160",
+      "dni": "54918266"
+    },
+    {
+      "id": "c0161",
+      "nombre": "Cliente161",
+      "dni": "30424174"
+    },
+    {
+      "id": "c0162",
+      "nombre": "Cliente162",
+      "dni": "51712435"
+    },
+    {
+      "id": "c0163",
+      "nombre": "Cliente163",
+      "dni": "58118126"
+    },
+    {
+      "id": "c0164",
+      "nombre": "Cliente164",
+      "dni": "37382955"
+    },
+    {
+      "id": "c0165",
+      "nombre": "Cliente165",
+      "dni": "16703805"
+    },
+    {
+      "id": "c0166",
+      "nombre": "Cliente166",
+      "dni": "48691961"
+    },
+    {
+      "id": "c0167",
+      "nombre": "Cliente167",
+      "dni": "94606742"
+    },
+    {
+      "id": "c0168",
+      "nombre": "Cliente168",
+      "dni": "77829340"
+    },
+    {
+      "id": "c0169",
+      "nombre": "Cliente169",
+      "dni": "36816900"
+    },
+    {
+      "id": "c0170",
+      "nombre": "Cliente170",
+      "dni": "57089687"
+    },
+    {
+      "id": "c0171",
+      "nombre": "Cliente171",
+      "dni": "39157546"
+    },
+    {
+      "id": "c0172",
+      "nombre": "Cliente172",
+      "dni": "65226073"
+    },
+    {
+      "id": "c0173",
+      "nombre": "Cliente173",
+      "dni": "91884377"
+    },
+    {
+      "id": "c0174",
+      "nombre": "Cliente174",
+      "dni": "94732341"
+    },
+    {
+      "id": "c0175",
+      "nombre": "Cliente175",
+      "dni": "05849386"
+    },
+    {
+      "id": "c0176",
+      "nombre": "Cliente176",
+      "dni": "03871933"
+    },
+    {
+      "id": "c0177",
+      "nombre": "Cliente177",
+      "dni": "94179368"
+    },
+    {
+      "id": "c0178",
+      "nombre": "Cliente178",
+      "dni": "85072179"
+    },
+    {
+      "id": "c0179",
+      "nombre": "Cliente179",
+      "dni": "95452265"
+    },
+    {
+      "id": "c0180",
+      "nombre": "Cliente180",
+      "dni": "73541047"
+    },
+    {
+      "id": "c0181",
+      "nombre": "Cliente181",
+      "dni": "28930380"
+    },
+    {
+      "id": "c0182",
+      "nombre": "Cliente182",
+      "dni": "60408298"
+    },
+    {
+      "id": "c0183",
+      "nombre": "Cliente183",
+      "dni": "84082456"
+    },
+    {
+      "id": "c0184",
+      "nombre": "Cliente184",
+      "dni": "42677351"
+    },
+    {
+      "id": "c0185",
+      "nombre": "Cliente185",
+      "dni": "27254799"
+    },
+    {
+      "id": "c0186",
+      "nombre": "Cliente186",
+      "dni": "56677520"
+    },
+    {
+      "id": "c0187",
+      "nombre": "Cliente187",
+      "dni": "10960308"
+    },
+    {
+      "id": "c0188",
+      "nombre": "Cliente188",
+      "dni": "87652560"
+    },
+    {
+      "id": "c0189",
+      "nombre": "Cliente189",
+      "dni": "44252851"
+    },
+    {
+      "id": "c0190",
+      "nombre": "Cliente190",
+      "dni": "39785449"
+    },
+    {
+      "id": "c0191",
+      "nombre": "Cliente191",
+      "dni": "58261461"
+    },
+    {
+      "id": "c0192",
+      "nombre": "Cliente192",
+      "dni": "37843905"
+    },
+    {
+      "id": "c0193",
+      "nombre": "Cliente193",
+      "dni": "54149051"
+    },
+    {
+      "id": "c0194",
+      "nombre": "Cliente194",
+      "dni": "51860544"
+    },
+    {
+      "id": "c0195",
+      "nombre": "Cliente195",
+      "dni": "30269408"
+    },
+    {
+      "id": "c0196",
+      "nombre": "Cliente196",
+      "dni": "49928754"
+    },
+    {
+      "id": "c0197",
+      "nombre": "Cliente197",
+      "dni": "09895358"
+    },
+    {
+      "id": "c0198",
+      "nombre": "Cliente198",
+      "dni": "32900342"
+    },
+    {
+      "id": "c0199",
+      "nombre": "Cliente199",
+      "dni": "81314215"
+    },
+    {
+      "id": "c0200",
+      "nombre": "Cliente200",
+      "dni": "11329722"
+    },
+    {
+      "id": "c0201",
+      "nombre": "jairjuan",
+      "dni": "8989"
+    },
+    {
+      "id": "c0202",
+      "nombre": "alemi",
+      "dni": "232432"
+    },
+    {
+      "id": "c0203",
+      "nombre": "benjamin de las torres de las casas ",
+      "dni": "6076316"
     }
   ],
   "ventas": [
     {
-      "id": "94e0",
-      "cliente": "4663",
-      "producto": "2b99",
-      "cantidad": 2,
-      "fecha": "2025-11-23T16:19:11.765Z"
+      "id": "v001",
+      "cliente": "c0010",
+      "fecha": "2025-11-01T10:15:00.000Z",
+      "productos": [
+        {
+          "productoId": "p005",
+          "cantidad": 2
+        },
+        {
+          "productoId": "p006",
+          "cantidad": 1
+        }
+      ]
     },
     {
-      "id": "v100",
-      "cliente": "4663",
-      "producto": "6960",
-      "cantidad": 1,
-      "fecha": "2025-11-23T18:21:10.066Z"
+      "id": "v002",
+      "cliente": "c0020",
+      "fecha": "2025-11-02T12:30:00.000Z",
+      "productos": [
+        {
+          "productoId": "p007",
+          "cantidad": 3
+        }
+      ]
     },
     {
-      "id": "v200",
-      "cliente": "c882",
-      "producto": "a123",
-      "cantidad": 4,
-      "fecha": "2025-11-23T18:27:23.927Z"
+      "id": "v003",
+      "cliente": "c0030",
+      "fecha": "2025-11-03T09:45:00.000Z",
+      "productos": [
+        {
+          "productoId": "p008",
+          "cantidad": 1
+        },
+        {
+          "productoId": "p009",
+          "cantidad": 2
+        }
+      ]
     },
     {
-      "id": "36b1",
-      "cliente": "c882",
-      "producto": "6960",
-      "cantidad": 23,
-      "fecha": "2025-11-23T18:47:57.192Z"
+      "id": "v004",
+      "cliente": "c0040",
+      "fecha": "2025-11-04T14:20:00.000Z",
+      "productos": [
+        {
+          "productoId": "p010",
+          "cantidad": 5
+        }
+      ]
+    },
+    {
+      "id": "v005",
+      "cliente": "  ",
+      "fecha": "2025-11-05T16:10:00.000Z",
+      "productos": [
+        {
+          "productoId": "p011",
+          "cantidad": 2
+        },
+        {
+          "productoId": "p012",
+          "cantidad": 1
+        },
+        {
+          "productoId": "p013",
+          "cantidad": 4
+        }
+      ]
+    },
+    {
+      "id": "v006",
+      "cliente": "c0010",
+      "fecha": "2025-11-06T11:05:00.000Z",
+      "productos": [
+        {
+          "productoId": "p014",
+          "cantidad": 3
+        }
+      ]
+    },
+    {
+      "id": "v007",
+      "cliente": "c0020",
+      "fecha": "2025-11-07T13:25:00.000Z",
+      "productos": [
+        {
+          "productoId": "p005",
+          "cantidad": 1
+        },
+        {
+          "productoId": "p006",
+          "cantidad": 2
+        }
+      ]
+    },
+    {
+      "id": "v008",
+      "cliente": "c0030",
+      "fecha": "2025-11-08T15:40:00.000Z",
+      "productos": [
+        {
+          "productoId": "p007",
+          "cantidad": 4
+        },
+        {
+          "productoId": "p008",
+          "cantidad": 2
+        }
+      ]
+    },
+    {
+      "id": "v009",
+      "cliente": "c0040",
+      "fecha": "2025-11-09T10:50:00.000Z",
+      "productos": [
+        {
+          "productoId": "p009",
+          "cantidad": 3
+        }
+      ]
+    },
+    {
+      "id": "v010",
+      "cliente": "c0050",
+      "fecha": "2025-11-10T14:15:00.000Z",
+      "productos": [
+        {
+          "productoId": "p010",
+          "cantidad": 2
+        },
+        {
+          "productoId": "p011",
+          "cantidad": 1
+        }
+      ]
+    },
+    {
+      "id": "v011",
+      "cliente": "c0010",
+      "fecha": "2025-11-11T09:30:00.000Z",
+      "productos": [
+        {
+          "productoId": "p012",
+          "cantidad": 3
+        }
+      ]
+    },
+    {
+      "id": "v012",
+      "cliente": "c0020",
+      "fecha": "2025-11-12T16:05:00.000Z",
+      "productos": [
+        {
+          "productoId": "p013",
+          "cantidad": 2
+        },
+        {
+          "productoId": "p014",
+          "cantidad": 1
+        }
+      ]
+    },
+    {
+      "id": "v013",
+      "cliente": "c0030",
+      "fecha": "2025-11-13T11:45:00.000Z",
+      "productos": [
+        {
+          "productoId": "p015",
+          "cantidad": 5
+        }
+      ]
+    },
+    {
+      "id": "v014",
+      "cliente": "c0040",
+      "fecha": "2025-11-14T13:10:00.000Z",
+      "productos": [
+        {
+          "productoId": "p005",
+          "cantidad": 2
+        },
+        {
+          "productoId": "p006",
+          "cantidad": 3
+        }
+      ]
+    },
+    {
+      "id": "v015",
+      "cliente": "c0050",
+      "fecha": "2025-11-15T15:55:00.000Z",
+      "productos": [
+        {
+          "productoId": "p007",
+          "cantidad": 1
+        },
+        {
+          "productoId": "p008",
+          "cantidad": 2
+        },
+        {
+          "productoId": "p009",
+          "cantidad": 1
+        }
+      ]
+    },
+    {
+      "id": "v016",
+      "cliente": "c0010",
+      "fecha": "2025-11-16T12:20:00.000Z",
+      "productos": [
+        {
+          "productoId": "p010",
+          "cantidad": 3
+        }
+      ]
+    },
+    {
+      "id": "v017",
+      "cliente": "c0020",
+      "fecha": "2025-11-17T14:35:00.000Z",
+      "productos": [
+        {
+          "productoId": "p011",
+          "cantidad": 2
+        },
+        {
+          "productoId": "p012",
+          "cantidad": 1
+        }
+      ]
+    },
+    {
+      "id": "v018",
+      "cliente": "c0030",
+      "fecha": "2025-11-18T09:10:00.000Z",
+      "productos": [
+        {
+          "productoId": "p013",
+          "cantidad": 4
+        }
+      ]
+    },
+    {
+      "id": "v019",
+      "cliente": "c0040",
+      "fecha": "2025-11-19T16:25:00.000Z",
+      "productos": [
+        {
+          "productoId": "p014",
+          "cantidad": 2
+        },
+        {
+          "productoId": "p015",
+          "cantidad": 3
+        }
+      ]
+    },
+    {
+      "id": "v020",
+      "cliente": "c0050",
+      "fecha": "2025-11-20T11:50:00.000Z",
+      "productos": [
+        {
+          "productoId": "p005",
+          "cantidad": 1
+        },
+        {
+          "productoId": "p006",
+          "cantidad": 2
+        },
+        {
+          "productoId": "p007",
+          "cantidad": 3
+        }
+      ]
+    },
+    {
+      "id": "v021",
+      "cliente": "c0203",
+      "fecha": "2025-12-03T19:43:25.983Z",
+      "productos": [
+        {
+          "productoId": "p005",
+          "cantidad": 7
+        },
+        {
+          "productoId": "p007",
+          "cantidad": 20
+        },
+        {
+          "productoId": "p009",
+          "cantidad": 10
+        }
+      ]
+    },
+    {
+      "id": "v022",
+      "cliente": "c0201",
+      "fecha": "2025-12-03T19:46:32.198Z",
+      "productos": [
+        {
+          "productoId": "p008",
+          "cantidad": 10
+        },
+        {
+          "productoId": "p011",
+          "cantidad": 5
+        },
+        {
+          "productoId": "p013",
+          "cantidad": 10
+        }
+      ]
+    },
+    {
+      "id": "v023",
+      "cliente": "c0203",
+      "fecha": "2025-12-03T20:24:20.408Z",
+      "productos": [
+        {
+          "productoId": "p006",
+          "cantidad": 2
+        }
+      ]
     }
   ]
 }

@@ -12,20 +12,23 @@ export interface Producto {
   nombre: string;
   precio: number;
 }
-export type ProductoCreate = Omit<Producto, "id">;
+
 
 export interface Cliente {
   id: string;
   nombre: string;
   dni: string;
 }
-export type ClienteCreate = Omit<Cliente, "id">;
+
+
+export interface ItemVenta {
+  productoId: string;
+  cantidad: number;
+}
 
 export interface Venta {
   id: string;
   cliente: string;
-  producto: string;
-  cantidad: number;
   fecha: string;
+  productos: ItemVenta[];
 }
-export type VentaCreate = Omit<Venta, "id">;

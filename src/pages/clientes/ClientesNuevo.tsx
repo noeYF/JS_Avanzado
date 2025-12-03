@@ -1,27 +1,29 @@
 import { useState } from "react";
-import type { ClienteCreate } from "../../models/types";
+import type { Cliente } from "../../models/types";
+import { useClientes } from "../../hook/DatosClientes";
 
-function ClientesNuevo() {
-  const [cliente, setCliente] = useState<ClienteCreate>({
+function ClienteNuevo() {
+  const { crearCliente, Clientes } = useClientes();
+  const [cliente, setCliente] = useState<Cliente>({
+    id: "",
     nombre: "",
-    dni: ""
+    dni: "",
   });
 
-  const guardar = (e: React.FormEvent<HTMLFormElement>) => {
+  const generarID = (): string => {
+    if (Clientes.length === 0) return "c1"; // caso cuando no hay Clientes
+    const ultimoCliente = Clientes.map((p) => Number(p.id!.slice(1)));
+    const max = Math.max(...ultimoCliente);
+    return `c${(max + 1).toString().padStart(4, "0")}`;
+  };
+
+  const guardar = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    fetch("http://localhost:3001/clientes", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(cliente)
-    });
-
-    setCliente({
-      nombre: "",
-      dni: ""
-    });
-
+    const nuevoCliente = { ...cliente, id: generarID() };
+    await crearCliente(nuevoCliente);
     alert("Cliente guardado");
+
+    setCliente({ id: "", nombre: "", dni: "" });
   };
 
   return (
@@ -33,18 +35,16 @@ function ClientesNuevo() {
           type="text"
           placeholder="Nombre del cliente"
           value={cliente.nombre}
-          onChange={(e) =>
-            setCliente({ ...cliente, nombre: e.target.value })
-          }
+          onChange={(e) => setCliente({ ...cliente, nombre: e.target.value })}
+          required
         />
 
         <input
           type="text"
           placeholder="DNI"
           value={cliente.dni}
-          onChange={(e) =>
-            setCliente({ ...cliente, dni: e.target.value })
-          }
+          onChange={(e) => setCliente({ ...cliente, dni: e.target.value })}
+          required
         />
 
         <button type="submit">Guardar</button>
@@ -53,4 +53,4 @@ function ClientesNuevo() {
   );
 }
 
-export default ClientesNuevo;
+export default ClienteNuevo;

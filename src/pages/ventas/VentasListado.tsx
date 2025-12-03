@@ -1,77 +1,122 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import type { Venta } from "../../models/types";
+import { useVentas } from "../../hook/DatosVentas";
+import { useProductos } from "../../hook/DatosProductos";
+import { useClientes } from "../../hook/DatosClientes";
 
-function VentasListado() {
-  const [ventas, setVentas] = useState<Venta[]>([]);
-  const navigate = useNavigate();
+const TestVentasTabla = () => {
+  const { ventas } = useVentas();
+  const { productos } = useProductos();
+  const { Clientes } = useClientes();
 
-  const cargar = async () => {
-    const res = await fetch("http://localhost:3001/ventas");
-    const data: Venta[] = await res.json();
-    setVentas(data);
-  };
 
-  useEffect(() => {
-    cargar();
-  }, []);
-
-  const eliminar = async (id: string | number) => {
-    try {
-      const res = await fetch(
-        `http://localhost:3001/ventas/${id}`,
-        { method: "DELETE" }
-      );
-
-      if (!res.ok) {
-        throw new Error(`Status: ${res.status}`);
-      }
-
-      alert("Venta eliminada correctamente");
-      cargar();
-    } catch (error) {
-      alert("Error al eliminar");
-      console.error(error);
-    }
-  };
-
-  const editar = (id: string | number) => {
-    navigate(`/ventas/editar/${id}`);
-  };
-
+  
   return (
-    <div className="table-box">
-      <h2>Lista de Ventas</h2>
+    <div style={{ padding: "20px" }}>
+      <h1>Ventas Registradas</h1>
 
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Cliente</th>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>Fecha</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {ventas.map((v) => (
-            <tr key={v.id}>
-              <td>{v.id}</td>
-              <td>{v.cliente}</td>
-              <td>{v.producto}</td>
-              <td>{v.cantidad}</td>
-              <td>{v.fecha}</td>
-              <td>
-                <button onClick={() => editar(v.id)}>Editar</button>
-                <button onClick={() => eliminar(v.id)}>Eliminar</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {ventas.map((venta) => {
+        const cliente = Clientes.find((c) => c.id === venta.cliente);
+
+{/*ENTENDER MEJOR ESTO */}
+        const totalVenta = venta.productos.reduce((acc, item) => {
+          const prod = productos.find((p) => p.id === item.productoId);
+          return acc + (prod ? prod.precio * item.cantidad : 0);
+        }, 0);
+
+        return (
+          <div
+            key={venta.id}
+            style={{
+              border: "1px solid #ccc",
+              padding: "10px",
+              marginBottom: "20px",
+              borderRadius: "5px",
+            }}
+          >
+            <h2>Venta ID: {venta.id}</h2>
+            <br />
+            <p>
+              Cliente: {cliente?.nombre}
+              <br />
+              DNI: {cliente?.dni}
+            </p>
+
+            <p>Fecha: {venta.fecha}</p>
+
+            <table
+              style={{
+                width: "100%",
+                borderCollapse: "collapse",
+                marginTop: "10px",
+              }}
+            >
+              <thead>
+                <tr>
+                  <th style={{ border: "1px solid #ccc", padding: "5px" }}>
+                    ID Producto
+                  </th>
+                  <th style={{ border: "1px solid #ccc", padding: "5px" }}>
+                    Nombre
+                  </th>
+                  <th style={{ border: "1px solid #ccc", padding: "5px" }}>
+                    Cantidad
+                  </th>
+                  <th style={{ border: "1px solid #ccc", padding: "5px" }}>
+                    Precio Unitario
+                  </th>
+                  <th style={{ border: "1px solid #ccc", padding: "5px" }}>
+                    Subtotal
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {venta.productos.map((item) => {
+                  const prod = productos.find((p) => p.id === item.productoId);
+                  const subtotal = prod ? prod.precio * item.cantidad : 0;
+                  return (
+                    <tr key={item.productoId}>
+                      <td style={{ border: "1px solid #ccc", padding: "5px" }}>
+                        {item.productoId}
+                      </td>
+                      <td style={{ border: "1px solid #ccc", padding: "5px" }}>
+                        {prod ? prod.nombre : "Producto no encontrado"}
+                      </td>
+                      <td style={{ border: "1px solid #ccc", padding: "5px" }}>
+                        {item.cantidad}
+                      </td>
+                      <td style={{ border: "1px solid #ccc", padding: "5px" }}>
+                        {prod ? `S/ ${prod.precio.toFixed(2)}` : "-"}
+                      </td>
+                      <td style={{ border: "1px solid #ccc", padding: "5px" }}>
+                        {`S/ ${subtotal.toFixed(2)}`}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td
+                    colSpan={4}
+                    style={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      textAlign: "right",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Total Venta:
+                  </td>
+                  <td style={{ border: "1px solid #ccc", padding: "5px" }}>
+                    S/ {totalVenta.toFixed(2)}
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        );
+      })}
     </div>
   );
-}
+};
 
-export default VentasListado;
+export default TestVentasTabla;
