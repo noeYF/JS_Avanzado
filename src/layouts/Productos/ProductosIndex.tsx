@@ -1,17 +1,20 @@
 import { Link, Outlet } from "react-router-dom";
+import "../../styles/layoutStyle/LayouProducto.scss";
 
 function ProductosIndex() {
   return (
-    <div className="container">
-      <h1>Módulo Productos</h1>
-
-      <div className="menu-tabs">
-        <Link to="lista">Listar</Link>
-        <Link to="nuevo">Nuevo</Link>
-        <Link to="buscar">Buscar</Link>
-      </div>
-
-      <Outlet />
+    <div className="layout-producto">
+      <aside className="sidebar">
+        <h2>Módulo Clientes</h2>
+        <nav className="menu">
+          <Link to="lista">Listar</Link>
+          <Link to="nuevo">Nuevo</Link>
+          <Link to="buscar">Buscar</Link>
+        </nav>
+      </aside>
+      <main className="main-content">
+        <Outlet />
+      </main>
     </div>
   );
 }

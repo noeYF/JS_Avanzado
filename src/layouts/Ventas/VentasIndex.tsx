@@ -1,21 +1,17 @@
 import { Link, Outlet } from "react-router-dom";
+import "../../styles/layoutStyle/LayouVentas.scss";
 
-import "../../styles/layoutStyle/LayouCliente.scss";
-
-function ClientesIndex() {
+function VentasIndex() {
   return (
-    <div className="layout-cliente ">
-      {/* Barra lateral */}
+    <div className="layout-venta">
       <aside className="sidebar">
-        <h2>Módulo Clientes</h2>
+        <h2>Módulo Ventas</h2>
         <nav className="menu">
           <Link to="lista">Listar</Link>
           <Link to="nuevo">Nuevo</Link>
           <Link to="buscar">Buscar</Link>
         </nav>
       </aside>
-
-      {/* Contenido principal */}
       <main className="main-content">
         <Outlet />
       </main>
@@ -23,4 +19,4 @@ function ClientesIndex() {
   );
 }
 
-export default ClientesIndex;
+export default VentasIndex;

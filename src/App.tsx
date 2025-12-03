@@ -36,7 +36,7 @@ import LoginPage from "./pages/login/LoginPage";
 import CrearUsuario from "./pages/login/crearCuenta";
 
 // Ventas
-import VentasIndex from "./pages/ventas/VentasIndex";
+import VentasIndex from "./layouts/Ventas/VentasIndex";
 import VentasListado from "./pages/ventas/VentasListado";
 import VentasNuevo from "./pages/ventas/NuevaVenta/ingresarDNI";
 import VentasBuscar from "./pages/ventas/VentasBuscar";

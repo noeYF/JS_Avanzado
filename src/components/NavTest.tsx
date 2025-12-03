@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom";
+import "../styles/Nav.scss";
+
+//img logo
+import logoIMG from "../assets/Nav/logo-removebg-preview.png";
 
 export const NavBar = () => {
   return (
-    <nav>
-      <div className="nav-wrapper">
-        {/* Logo */}
-        <Link to="" className="brand-logo center">
-          Logo
-        </Link>
-
-        {/* Links */}
-        <ul className="left hide-on-med-and-down">
+    <nav className="Nav">
+      <div className="Contenedor">
+        <ul className="Rutas">
           <li>
             <Link to="/productos">Productos</Link>
           </li>
@@ -21,12 +19,18 @@ export const NavBar = () => {
             <Link to="/ventas">Ventas</Link>
           </li>
         </ul>
+      </div>
 
-        {/* Botón */}
-        <div>
+      <div className="logo">
+        {/* Logo */}
+        <Link to="">
+          <img src={logoIMG} alt="" className="imgLogo" />
+        </Link>
+      </div>
+      <div>
+        <div className="inicioSecion">
           <Link to="/login">
-            {" "}
-            <button className="btn waves-effect right" type="button">
+            <button className="boton" type="button">
               Iniciar sesión
             </button>
           </Link>
