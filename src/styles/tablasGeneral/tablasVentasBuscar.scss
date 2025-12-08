@@ -1,0 +1,85 @@
+@use "../paletaColores";
+
+.ventas-buscar-container {
+  padding: 20px;
+
+  h1 {
+    color: paletaColores.$rojo-oscuro;
+    margin-bottom: 20px;
+  }
+
+  .input-dni {
+    width: 100%;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    border: 1px solid paletaColores.$gris-claro;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+
+    &:focus {
+      border-color: paletaColores.$rojo-oscuro;
+      box-shadow: 0 0 4px rgba(paletaColores.$rojo-oscuro, 0.6);
+    }
+  }
+
+  .error-text {
+    color: paletaColores.$rojo-oscuro;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .venta-card {
+    background-color: paletaColores.$blanco-crema;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+
+    h2 {
+      color: paletaColores.$rojo-oscuro;
+      margin-bottom: 12px;
+      font-size: 22px;
+    }
+
+    p {
+      margin: 5px 0;
+      color: paletaColores.$gris-oscuro;
+    }
+
+    .ventas-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+
+      th,
+      td {
+        padding: 10px 12px;
+        border: 1px solid paletaColores.$gris-claro;
+        font-size: 14px;
+      }
+
+      th {
+        background-color: paletaColores.$rojo-medio;
+        color: paletaColores.$blanco-puro;
+        font-weight: 600;
+      }
+
+      tbody tr {
+        background-color: paletaColores.$blanco-puro;
+
+        &:hover {
+          background-color: rgba(paletaColores.$rojo-oscuro, 0.3);
+        }
+      }
+
+      .text-right {
+        text-align: right;
+      }
+
+      .bold {
+        font-weight: 700;
+      }
+    }
+  }
+}

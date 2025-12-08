@@ -2,148 +2,117 @@ import React, { useState } from "react";
 import { useClientes } from "../../hook/DatosClientes";
 import { useVentas } from "../../hook/DatosVentas";
 import { useProductos } from "../../hook/DatosProductos";
+import type { Cliente } from "../../models/typeClientes";
+import type { Producto } from "../../models/typeProducto";
+import type { ItemVenta, Venta } from "../../models/typeVentas";
+import "../../styles/tablasGeneral/tablasVentasBuscar.scss"
 
 const VentasBuscar = () => {
   const { Clientes } = useClientes();
   const { ventas } = useVentas();
   const { productos } = useProductos();
 
-  const [DNI, setDNI] = useState("");
+  const [dni, setDni] = useState("");
 
   // Buscar cliente por DNI
-  const clienteEncontrado = Clientes.find((c) => c.dni === DNI);
+  const clienteEncontrado: Cliente | undefined = Clientes.find(
+    (c) => c.datosClientes.DNI === Number(dni)
+  );
 
   // Filtrar ventas del cliente encontrado
-  const ventasEncontradas = clienteEncontrado
+  const ventasEncontradas: Venta[] = clienteEncontrado
     ? ventas.filter((v) => v.cliente === clienteEncontrado.id)
     : [];
 
   return (
-    <div style={{ padding: "20px", maxWidth: "900px", margin: "0 auto" }}>
+    <div className="ventas-buscar-container">
       <h1>Buscar Ventas por DNI</h1>
 
       <input
         type="text"
         placeholder="Ingrese DNI del cliente"
-        value={DNI}
-        onChange={(e) => setDNI(e.target.value)}
-        style={{
-          width: "100%",
-          padding: "10px",
-          margin: "10px 0 20px 0",
-          fontSize: "16px",
-        }}
+        value={dni}
+        onChange={(e) => setDni(e.target.value)}
+        className="input-dni"
       />
 
-      {!clienteEncontrado && DNI && (
-        <p style={{ color: "red" }}>
-          No se encontró ningún cliente con este DNI
-        </p>
+      {!clienteEncontrado && dni && (
+        <p className="error-text">No se encontró ningún cliente con este DNI</p>
       )}
 
       {ventasEncontradas.map((venta) => {
-        const totalVenta = venta.productos.reduce((acc, item) => {
-          const prod = productos.find((p) => p.id === item.productoId);
-          return acc + (prod ? prod.precio * item.cantidad : 0);
-        }, 0);
-
         return (
-          <div
-            key={venta.id}
-            style={{
-              border: "1px solid #ccc",
-              padding: "15px",
-              marginBottom: "20px",
-              borderRadius: "8px",
-              backgroundColor: "red",
-            }}
-          >
-            <h2 style={{ margin: "0 0 10px 0" }}>Venta ID: {venta.id}</h2>
-            <p style={{ margin: "0 0 5px 0" }}>
-              Cliente: {clienteEncontrado?.nombre}
-              <br />
-              DNI: {clienteEncontrado?.dni}
+          <div key={venta.id} className="venta-card">
+            <h2>Venta ID: {venta.id}</h2>
+            <p>
+              <strong>Cliente:</strong>{" "}
+              {clienteEncontrado?.datosClientes.nombre}{" "}
+              {clienteEncontrado?.datosClientes.apellido} <br />
+              <strong>DNI:</strong> {clienteEncontrado?.datosClientes.DNI}
             </p>
-            <p style={{ margin: "0 0 10px 0" }}>
-              Fecha: {new Date(venta.fecha).toLocaleString()}
+            <p>
+              <strong>Fecha:</strong> {new Date(venta.fecha).toLocaleString()}
             </p>
 
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
+            <table className="ventas-table">
               <thead>
                 <tr>
-                  {[
-                    "ID Producto",
-                    "Nombre",
-                    "Cantidad",
-                    "Precio Unitario",
-                    "Subtotal",
-                  ].map((header) => (
-                    <th
-                      key={header}
-                      style={{
-                        border: "1px solid #ccc",
-                        padding: "8px",
-                        backgroundColor: "#362abbff",
-                      }}
-                    >
-                      {header}
-                    </th>
-                  ))}
+                  <th>ID Producto</th>
+                  <th>Nombre</th>
+                  <th>Cantidad</th>
+                  <th>Precio Unitario</th>
+                  <th>Subtotal</th>
                 </tr>
               </thead>
               <tbody>
-                {venta.productos.map((item) => {
-                  const prod = productos.find((p) => p.id === item.productoId);
+                {venta.productos.map((item: ItemVenta) => {
+                  const prod: Producto | undefined = productos.find(
+                    (p) => p.id === item.productoId
+                  );
                   const subtotal = prod ? prod.precio * item.cantidad : 0;
 
                   return (
                     <tr key={item.productoId}>
-                      <td style={{ border: "1px solid #ccc", padding: "8px" }}>
-                        {item.productoId}
-                      </td>
-                      <td style={{ border: "1px solid #ccc", padding: "8px" }}>
-                        {prod ? prod.nombre : "Producto no encontrado"}
-                      </td>
-                      <td style={{ border: "1px solid #ccc", padding: "8px" }}>
-                        {item.cantidad}
-                      </td>
-                      <td style={{ border: "1px solid #ccc", padding: "8px" }}>
-                        {prod ? `S/ ${prod.precio.toFixed(2)}` : "-"}
-                      </td>
-                      <td style={{ border: "1px solid #ccc", padding: "8px" }}>
-                        {`S/ ${subtotal.toFixed(2)}`}
-                      </td>
+                      <td>{item.productoId}</td>
+                      <td>{prod?.nombre || "Producto no encontrado"}</td>
+                      <td>{item.cantidad}</td>
+                      <td>{prod ? `S/ ${prod.precio.toFixed(2)}` : "-"}</td>
+                      <td>{`S/ ${subtotal.toFixed(2)}`}</td>
                     </tr>
                   );
                 })}
               </tbody>
               <tfoot>
                 <tr>
-                  <td
-                    colSpan={4}
-                    style={{
-                      border: "1px solid #ccc",
-                      padding: "8px",
-                      textAlign: "right",
-                      fontWeight: "bold",
-                      backgroundColor: "#b59898ff",
-                    }}
-                  >
-                    Total Venta:
+                  <td colSpan={4} className="text-right bold">
+                    Costo General:
                   </td>
-                  <td
-                    style={{
-                      border: "1px solid #ffffffff",
-                      padding: "8px",
-                      fontWeight: "bold",
-                      
-                    }}
-                  >
-                    S/ {totalVenta.toFixed(2)}
+                  <td className="bold">
+                    S/ {venta.cantidadPago.costogeneral.toFixed(2)}
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={4} className="text-right bold">
+                    IGV (18%):
+                  </td>
+                  <td className="bold">
+                    S/ {venta.cantidadPago.costorIGV.toFixed(2)}
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={4} className="text-right bold">
+                    Total:
+                  </td>
+                  <td className="bold">
+                    S/ {venta.cantidadPago.costoTotal.toFixed(2)}
                   </td>
                 </tr>
               </tfoot>
             </table>
+
+            <p>
+              <strong>Nota:</strong> {venta.comentario.nota}
+            </p>
           </div>
         );
       })}

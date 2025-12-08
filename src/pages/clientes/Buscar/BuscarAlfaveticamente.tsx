@@ -12,34 +12,48 @@ const BuscarClientesAlfabetico = () => {
 
   // Orden alfabético A → Z por nombre
   const clientesOrdenados = [...Clientes].sort((a, b) =>
-    a.nombre.localeCompare(b.nombre)
+    a.datosClientes.nombre.localeCompare(b.datosClientes.nombre)
   );
 
   return (
-    <div>
+    <div className="table-box ">
       <h2>Clientes Ordenados Alfabéticamente</h2>
-      <table>
+     <table>
         <thead>
           <tr>
             <th>ID</th>
-            <th>Nombre</th>
+            <th>Nombre Completo</th>
             <th>DNI</th>
+            <th>Dirección</th>
+            <th>Referencia</th>
+            <th>Teléfono</th>
+            <th>Correo</th>
+
             <th>Acciones</th>
           </tr>
         </thead>
+
         <tbody>
           {clientesOrdenados.map((c) => (
             <tr key={c.id}>
               <td>{c.id}</td>
-              <td>{c.nombre}</td>
-              <td>{c.dni}</td>
+              <td>
+                {c.datosClientes.nombre} {c.datosClientes.apellido}
+              </td>
+              <td>{c.datosClientes.DNI}</td>
+              <td>{c.direccion.direccion}</td>
+              <td>{c.direccion.referencia || "—"}</td>
+              <td>{c.telefono.numero}</td>
+              <td>{c.telefono.correo}</td>
+
               <td>
                 <button onClick={() => editar(c.id)}>Editar</button>
+
                 <button
                   onClick={() => {
                     if (
                       window.confirm(
-                        `¿Estás seguro de eliminar al cliente ${c.nombre}?`
+                        `¿Seguro que deseas eliminar al cliente ${c.datosClientes.nombre}?`
                       )
                     ) {
                       eliminarCliente(c.id);

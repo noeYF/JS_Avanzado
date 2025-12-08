@@ -1,117 +1,100 @@
 import { useVentas } from "../../hook/DatosVentas";
 import { useProductos } from "../../hook/DatosProductos";
 import { useClientes } from "../../hook/DatosClientes";
+import type { Venta, ItemVenta } from "../../models/typeVentas";
+import type { Cliente } from "../../models/typeClientes";
+import type { Producto } from "../../models/typeProducto";
+import "../../styles/tablasGeneral/tablasVentas.scss"
 
 const TestVentasTabla = () => {
   const { ventas } = useVentas();
   const { productos } = useProductos();
   const { Clientes } = useClientes();
 
-
-  
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Ventas Registradas</h1>
+    <div className="ventas-contenedor">
+      <h1 className="ventas-titulo">Ventas Registradas</h1>
 
-      {ventas.map((venta) => {
-        const cliente = Clientes.find((c) => c.id === venta.cliente);
-
-{/*ENTENDER MEJOR ESTO */}
-        const totalVenta = venta.productos.reduce((acc, item) => {
-          const prod = productos.find((p) => p.id === item.productoId);
-          return acc + (prod ? prod.precio * item.cantidad : 0);
-        }, 0);
+      {ventas.map((venta: Venta) => {
+        const cliente: Cliente | undefined = Clientes.find(
+          (c) => c.id === venta.cliente
+        );
 
         return (
-          <div
-            key={venta.id}
-            style={{
-              border: "1px solid #ccc",
-              padding: "10px",
-              marginBottom: "20px",
-              borderRadius: "5px",
-            }}
-          >
-            <h2>Venta ID: {venta.id}</h2>
-            <br />
-            <p>
-              Cliente: {cliente?.nombre}
-              <br />
-              DNI: {cliente?.dni}
-            </p>
+          <div key={venta.id} className="venta-card">
+            <h2 className="venta-id">Venta ID: {venta.id}</h2>
 
-            <p>Fecha: {venta.fecha}</p>
+            <div className="venta-cliente-info">
+              <p>
+                <strong>Cliente:</strong> {cliente?.datosClientes.nombre}{" "}
+                {cliente?.datosClientes.apellido}
+              </p>
+              <p>
+                <strong>DNI:</strong> {cliente?.datosClientes.DNI}
+              </p>
+            </div>
 
-            <table
-              style={{
-                width: "100%",
-                borderCollapse: "collapse",
-                marginTop: "10px",
-              }}
-            >
-              <thead>
-                <tr>
-                  <th style={{ border: "1px solid #ccc", padding: "5px" }}>
-                    ID Producto
-                  </th>
-                  <th style={{ border: "1px solid #ccc", padding: "5px" }}>
-                    Nombre
-                  </th>
-                  <th style={{ border: "1px solid #ccc", padding: "5px" }}>
-                    Cantidad
-                  </th>
-                  <th style={{ border: "1px solid #ccc", padding: "5px" }}>
-                    Precio Unitario
-                  </th>
-                  <th style={{ border: "1px solid #ccc", padding: "5px" }}>
-                    Subtotal
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {venta.productos.map((item) => {
-                  const prod = productos.find((p) => p.id === item.productoId);
-                  const subtotal = prod ? prod.precio * item.cantidad : 0;
-                  return (
-                    <tr key={item.productoId}>
-                      <td style={{ border: "1px solid #ccc", padding: "5px" }}>
-                        {item.productoId}
-                      </td>
-                      <td style={{ border: "1px solid #ccc", padding: "5px" }}>
-                        {prod ? prod.nombre : "Producto no encontrado"}
-                      </td>
-                      <td style={{ border: "1px solid #ccc", padding: "5px" }}>
-                        {item.cantidad}
-                      </td>
-                      <td style={{ border: "1px solid #ccc", padding: "5px" }}>
-                        {prod ? `S/ ${prod.precio.toFixed(2)}` : "-"}
-                      </td>
-                      <td style={{ border: "1px solid #ccc", padding: "5px" }}>
-                        {`S/ ${subtotal.toFixed(2)}`}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td
-                    colSpan={4}
-                    style={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      textAlign: "right",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Total Venta:
-                  </td>
-                  <td style={{ border: "1px solid #ccc", padding: "5px" }}>
-                    S/ {totalVenta.toFixed(2)}
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
+            <div className="venta-tabla-contenedor">
+              <table className="venta-tabla">
+                <thead>
+                  <tr>
+                    <th>ID Producto</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Subtotal</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {venta.productos.map((item: ItemVenta) => {
+                    const prod: Producto | undefined = productos.find(
+                      (p) => p.id === item.productoId
+                    );
+                    const subtotal = prod ? prod.precio * item.cantidad : 0;
+
+                    return (
+                      <tr key={item.productoId}>
+                        <td>{item.productoId}</td>
+                        <td>{prod?.nombre || "Producto no encontrado"}</td>
+                        <td>{item.cantidad}</td>
+                        <td>{prod ? prod.precio.toFixed(2) : "-"}</td>
+                        <td>{subtotal.toFixed(2)}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+
+                <tfoot>
+                  <tr>
+                    <td colSpan={4} className="td-right">
+                      Costo General:
+                    </td>
+                    <td>{venta.cantidadPago.costogeneral.toFixed(2)}</td>
+                  </tr>
+
+                  <tr>
+                    <td colSpan={4} className="td-right">
+                      IGV (18%):
+                    </td>
+                    <td>{venta.cantidadPago.costorIGV.toFixed(2)}</td>
+                  </tr>
+
+                  <tr>
+                    <td colSpan={4} className="td-right">
+                      Total:
+                    </td>
+                    <td>{venta.cantidadPago.costoTotal.toFixed(2)}</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+
+            <div className="venta-nota">
+              <p>
+                <strong>Nota:</strong> {venta.comentario.nota}
+              </p>
+            </div>
           </div>
         );
       })}

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { clientesServices } from "../services/clientesServices";
-import type { Cliente } from "../models/types";
+import type { Cliente } from "../models/typeClientes";
 
 export const useClientes = () => {
   const [Clientes, setClientes] = useState<Cliente[]>([]);

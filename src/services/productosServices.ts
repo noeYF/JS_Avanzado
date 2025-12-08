@@ -1,6 +1,6 @@
 import { API_BASE_URL } from "./api/config";
 import { ApiDatos } from "./api/apiDatos";
-import type { Producto } from "../models/types";
+import type { Producto } from "../models/typeProducto";
 
 export const URL = `${API_BASE_URL}/productos`;
 

@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 
 // Layout
 import MainLayout from "./layouts/MainLayout";
@@ -30,7 +34,7 @@ import BuscarAlfabeticamenteClientes from "./pages/clientes/Buscar/BuscarAlfavet
 import BuscarEspecificamenteClientes from "./pages/clientes/Buscar/BuscarEspecificamente";
 
 // Pages
-import Dashboard from "./pages/dashboard/Dashboard";
+
 import Inicio from "./pages/Inicio";
 import LoginPage from "./pages/login/LoginPage";
 import CrearUsuario from "./pages/login/crearCuenta";
@@ -51,20 +55,23 @@ const router = createBrowserRouter([
       { path: "", element: <Inicio /> },
       { path: "/login", element: <LoginPage /> },
       { path: "/CrearCuenta", element: <CrearUsuario /> },
-      { path: "dashboard", element: <Dashboard /> },
+      
 
       {
         path: "productos",
         element: <ProductosIndex />,
         children: [
-          { path: "", element: <ProductosListado /> },
+          { index: true, element: <Navigate to="lista" replace /> },
           { path: "lista", element: <ProductosListado /> },
           { path: "nuevo", element: <ProductosNuevo /> },
           {
             path: "buscar",
             element: <BuscarIndexProductos />,
             children: [
-              { path: "", element: <BuscarEspecificamenteProductos /> },
+              {
+                index: true,
+                element: <Navigate to="buscarEspecificamente" replace />,
+              },
               {
                 path: "buscarAlfaveticamente",
                 element: <BuscarAlfabeticamenteProductos />,
@@ -84,7 +91,7 @@ const router = createBrowserRouter([
         path: "clientes",
         element: <ClientesIndex />,
         children: [
-          { path: "", element: <ClientesListado /> },
+          { index: true, element: <Navigate to="nuevo" replace /> },
           { path: "lista", element: <ClientesListado /> },
           { path: "nuevo", element: <ClientesNuevo /> },
           { path: "editar/:id", element: <ClientesEditar /> },
@@ -92,7 +99,10 @@ const router = createBrowserRouter([
             path: "buscar",
             element: <BuscarIndexClientes />,
             children: [
-              { path: "", element: <BuscarEspecificamenteClientes /> },
+              {
+                index: true,
+                element: <Navigate to="buscarEspecificamente" replace />,
+              },
               {
                 path: "buscarAlfaveticamente",
                 element: <BuscarAlfabeticamenteClientes />,
@@ -110,7 +120,7 @@ const router = createBrowserRouter([
         path: "ventas",
         element: <VentasIndex />,
         children: [
-          { path: "", element: <VentasListado /> },
+          { index: true, element: <Navigate to="lista" replace /> },
           { path: "lista", element: <VentasListado /> },
           { path: "nuevo", element: <VentasNuevo /> },
           { path: "generarVenta", element: <VentaGenerar /> },

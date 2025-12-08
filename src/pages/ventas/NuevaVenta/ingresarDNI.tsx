@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useClientes } from "../../../hook/DatosClientes";
+import "../../../styles/generarNuevos/DNI.scss"
 
 const LoginDNI = () => {
   const { Clientes, loading } = useClientes();
   const [dni, setDni] = useState("");
-  const [mostrarModal, setMostrarModal] = useState(false); // para el modal
+  const [mostrarModal, setMostrarModal] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    const cliente = Clientes.find((c) => c.dni.trim() === dni.trim());
+    const cliente = Clientes.find(
+      (c) => c.datosClientes.DNI.toString().trim() === dni.trim()
+    );
 
     if (cliente) {
       navigate("/ventas/generarVenta", { state: { cliente } });
@@ -21,47 +24,24 @@ const LoginDNI = () => {
   if (loading) return <p>Cargando clientes...</p>;
 
   return (
-    <div style={{ padding: "20px", maxWidth: "400px", margin: "0 auto" }}>
+    <div className="login-dni-container">
       <h2>Ingreso por DNI</h2>
-      <input
-        type="text"
-        placeholder="Ingrese DNI"
-        value={dni}
-        onChange={(e) => setDni(e.target.value)}
-        style={{ width: "100%", padding: "8px", marginBottom: "10px" }}
-      />
-      <button onClick={handleLogin} style={{ width: "100%", padding: "8px" }}>
-        Ingresar
-      </button>
+      <div className="input-group">
+        <label htmlFor="dni">Ingrese el DNI de la persona</label>
+        <input
+          id="dni"
+          type="text"
+          value={dni}
+          onChange={(e) => setDni(e.target.value)}
+        />
+      </div>
+      <button onClick={handleLogin}>Ingresar</button>
 
       {mostrarModal && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(0,0,0,0.5)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <div
-            style={{
-              backgroundColor: "black",
-              padding: "20px",
-              borderRadius: "5px",
-              textAlign: "center",
-              width: "300px",
-            }}
-          >
+        <div className="modal-backdrop">
+          <div className="modal-content">
             <p>No hay un cliente con ese DNI.</p>
-            <button
-              onClick={() => setMostrarModal(false)}
-              style={{ marginRight: "10px" }}
-            >
+            <button onClick={() => setMostrarModal(false)}>
               Mantener en la página
             </button>
             <button onClick={() => navigate("/clientes/nuevo")}>

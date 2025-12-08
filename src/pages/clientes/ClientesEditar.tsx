@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import type { Cliente } from "../../models/types";
+import type { Cliente } from "../../models/typeClientes";
 import { useClientes } from "../../hook/DatosClientes";
 
 function ClientesEditar() {
@@ -10,8 +10,22 @@ function ClientesEditar() {
 
   const [cliente, setCliente] = useState<Cliente>({
     id: "",
-    nombre: "",
-    dni: "",
+    datosClientes: {
+      id: "",
+      nombre: "", // nombre del cliente vacío
+      apellido: "", // apellido vacío
+      DNI: 0, // DNI inicial como 0
+    },
+    direccion: {
+      id: "",
+      direccion: "", // dirección vacía
+      referencia: "", // referencia opcional
+    },
+    telefono: {
+      id: "",
+      numero: "", // número vacío
+      correo: "", // correo vacío
+    },
   });
 
   useEffect(() => {
@@ -19,7 +33,11 @@ function ClientesEditar() {
       if (!id) return;
 
       const data = await traerCliente(id);
-      if (data) setCliente(data);
+      if (data) {
+        // Transformar para que coincida con ClienteCreate
+
+        setCliente(data);
+      }
     };
 
     cargarCliente();
@@ -44,21 +62,147 @@ function ClientesEditar() {
       <h2>Editar Cliente</h2>
 
       <form onSubmit={actualizar}>
-        <input
-          type="text"
-          value={cliente.nombre}
-          onChange={(e) => setCliente({ ...cliente, nombre: e.target.value })}
-          required
-        />
+        {/* DATOS DEL CLIENTE */}
+        <fieldset>
+          <legend>Datos del Cliente</legend>
 
-        <input
-          type="text"
-          value={cliente.dni}
-          onChange={(e) => setCliente({ ...cliente, dni: e.target.value })}
-          required
-        />
+          <label>
+            Nombre
+            <input
+              type="text"
+              value={cliente.datosClientes.nombre}
+              onChange={(e) =>
+                setCliente({
+                  ...cliente,
+                  datosClientes: {
+                    ...cliente.datosClientes,
+                    nombre: e.target.value,
+                  },
+                })
+              }
+              required
+            />
+          </label>
 
-        <button type="submit">Actualizar</button>
+          <label>
+            Apellido
+            <input
+              type="text"
+              value={cliente.datosClientes.apellido}
+              onChange={(e) =>
+                setCliente({
+                  ...cliente,
+                  datosClientes: {
+                    ...cliente.datosClientes,
+                    apellido: e.target.value,
+                  },
+                })
+              }
+              required
+            />
+          </label>
+
+          <label>
+            DNI
+            <input
+              type="number"
+              value={cliente.datosClientes.DNI}
+              onChange={(e) =>
+                setCliente({
+                  ...cliente,
+                  datosClientes: {
+                    ...cliente.datosClientes,
+                    DNI: Number(e.target.value),
+                  },
+                })
+              }
+              required
+            />
+          </label>
+        </fieldset>
+
+        {/* DIRECCIÓN */}
+        <fieldset>
+          <legend>Dirección</legend>
+
+          <label>
+            Dirección
+            <input
+              type="text"
+              value={cliente.direccion.direccion}
+              onChange={(e) =>
+                setCliente({
+                  ...cliente,
+                  direccion: {
+                    ...cliente.direccion,
+                    direccion: e.target.value,
+                  },
+                })
+              }
+              required
+            />
+          </label>
+
+          <label>
+            Referencia
+            <input
+              type="text"
+              value={cliente.direccion.referencia || ""}
+              onChange={(e) =>
+                setCliente({
+                  ...cliente,
+                  direccion: {
+                    ...cliente.direccion,
+                    referencia: e.target.value,
+                  },
+                })
+              }
+            />
+          </label>
+        </fieldset>
+
+        {/* TELÉFONO Y CORREO */}
+        <fieldset>
+          <legend>Contacto</legend>
+
+          <label>
+            Teléfono
+            <input
+              type="text"
+              value={cliente.telefono.numero}
+              onChange={(e) =>
+                setCliente({
+                  ...cliente,
+                  telefono: {
+                    ...cliente.telefono,
+                    numero: e.target.value,
+                  },
+                })
+              }
+              required
+            />
+          </label>
+
+          <label>
+            Correo
+            <input
+              type="email"
+              value={cliente.telefono.correo}
+              onChange={(e) =>
+                setCliente({
+                  ...cliente,
+                  telefono: {
+                    ...cliente.telefono,
+                    correo: e.target.value,
+                  },
+                })
+              }
+              required
+            />
+          </label>
+        </fieldset>
+
+        <button type="submit">Actualizar Cliente</button>
       </form>
     </div>
   );

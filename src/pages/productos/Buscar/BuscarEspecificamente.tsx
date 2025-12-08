@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useProductos } from "../../../hook/DatosProductos";
 import { useNavigate } from "react-router-dom";
+import "../../../styles/tablasGeneral/tablas.scss";
 
 const BuscarEspecificamente = () => {
   const [busqueda, setBusqueda] = useState("");
@@ -17,7 +18,7 @@ const BuscarEspecificamente = () => {
   );
 
   return (
-    <div>
+    <div className="table-box">
       <h2>Buscar Producto</h2>
 
       <input
@@ -25,7 +26,7 @@ const BuscarEspecificamente = () => {
         placeholder="Buscar por nombre..."
         value={busqueda}
         onChange={(e) => setBusqueda(e.target.value)}
-        style={{ marginBottom: "15px", padding: "5px", width: "250px" }}
+        className="input-busqueda"
       />
 
       <table>
@@ -34,6 +35,13 @@ const BuscarEspecificamente = () => {
             <th>ID</th>
             <th>Nombre</th>
             <th>Precio</th>
+            <th>Proveedor</th>
+            <th>Teléfono</th>
+            <th>Dirección</th>
+            <th>Cantidad</th>
+            <th>Cantidad mínima</th>
+            <th>Fecha creación</th>
+            <th>Fecha vencimiento</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -42,10 +50,20 @@ const BuscarEspecificamente = () => {
             <tr key={p.id}>
               <td>{p.id}</td>
               <td>{p.nombre}</td>
-              <td>{p.precio}</td>
+              <td>S/ {p.precio.toFixed(2)}</td>
+              <td>{p.proveedor.nombre}</td>
+              <td>{p.proveedor.telefono}</td>
+              <td>{p.proveedor.direccion}</td>
+              <td>{p.catidades.catidad}</td>
+              <td>{p.catidades.cantidadMinima}</td>
+              <td>{p.datosProductos.fechaCreacion}</td>
+              <td>{p.datosProductos.fechaVencimiento}</td>
               <td>
-                <button onClick={() => editar(p.id)}>Editar</button>
+                <button className="editar" onClick={() => editar(p.id)}>
+                  Editar
+                </button>
                 <button
+                  className="eliminar"
                   onClick={() => {
                     if (
                       window.confirm(

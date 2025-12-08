@@ -1,0 +1,187 @@
+@use "../paletaColores";
+
+.form-productos {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .contenedor-NP {
+    background-color: paletaColores.$rojo-medio;
+
+    border-radius: 20px;
+    padding: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .nom-pre {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      background-color: paletaColores.$rojo-oscuro;
+      padding: 5px;
+      border-radius: 20px;
+      label {
+        margin-left: 10px;
+        margin-right: 10px;
+        h6 {
+          color: white;
+          background-color: paletaColores.$rojo-medio;
+          width: auto;
+          padding: 10px;
+          border-radius: 30px;
+        }
+      }
+    }
+    .provedor {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      .dir-nom-tele {
+        width: 100%;
+        display: grid;
+        background-color: paletaColores.$rojo-oscuro;
+        padding: 5px;
+        border-radius: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        .nombre {
+          margin-right: 10px;
+          padding: 10px;
+          h6 {
+            color: white;
+            background-color: paletaColores.$rojo-medio;
+            width: auto;
+            padding: 10px;
+            border-radius: 30px;
+          }
+        }
+        .telefono {
+          margin-left: 10px;
+          padding: 10px;
+          h6 {
+            color: white;
+            background-color: paletaColores.$rojo-medio;
+            width: auto;
+            padding: 10px;
+            border-radius: 30px;
+          }
+        }
+        .direccion {
+          grid-column: 1/3;
+          padding: 10px;
+          h6 {
+            color: white;
+            background-color: paletaColores.$rojo-medio;
+            width: auto;
+            padding: 10px;
+            border-radius: 30px;
+          }
+        }
+      }
+    }
+    .inventario {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      .can-canM {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        background-color: paletaColores.$rojo-oscuro;
+        padding: 5px;
+        border-radius: 20px;
+        .catidad {
+          margin-right: 10px;
+          padding: 10px;
+          h6 {
+            color: white;
+            background-color: paletaColores.$rojo-medio;
+            width: auto;
+            padding: 10px;
+            border-radius: 30px;
+          }
+        }
+        .catidad-min {
+          margin-left: 10px;
+          padding: 10px;
+          h6 {
+            color: white;
+            background-color: paletaColores.$rojo-medio;
+            width: auto;
+            padding: 10px;
+            border-radius: 30px;
+          }
+        }
+      }
+    }
+    .info-produc {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      .fc-fv-ds {
+        width: 100%;
+        display: grid;
+        background-color: paletaColores.$rojo-oscuro;
+        padding: 5px;
+        border-radius: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        .fc-cr {
+          margin-right: 10px;
+          padding: 10px;
+          h6 {
+            color: white;
+            background-color: paletaColores.$rojo-medio;
+            width: auto;
+            padding: 10px;
+            border-radius: 30px;
+          }
+        }
+        .fc-v {
+          margin-left: 10px;
+          padding: 10px;
+          h6 {
+            color: white;
+            background-color: paletaColores.$rojo-medio;
+            width: auto;
+            padding: 10px;
+            border-radius: 30px;
+          }
+        }
+        .des {
+          grid-column: 1/3;
+          padding: 10px;
+          h6 {
+            color: white;
+            background-color: paletaColores.$rojo-medio;
+            width: auto;
+            padding: 10px;
+            border-radius: 30px;
+          }
+        }
+      }
+    }
+    .boton {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      button {
+        width: 60%;
+        height: 50px;
+        background-color: paletaColores.$gris-oscuro;
+        color: white;
+        transition: 0.5s;
+        &:hover {
+          background-color: paletaColores.$gris-claro;
+          color: black;
+          border: 1px solid paletaColores.$gris-oscuro;
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { productosServices } from "../services/productosServices";
-import type { Producto } from "../models/types";
+import type { Producto } from "../models/typeProducto";
 
 export const useProductos = () => {
   const [productos, setProductos] = useState<Producto[]>([]);

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { usuariosService } from "../services/usuariosServices";
-import type { Usuario } from "../models/types";
+import type { Usuario } from "../models/typeUsuarios";
 
 export const useUsuarios = () => {
   const [usuarios, setUsuarios] = useState<Usuario[]>([]);
@@ -22,6 +22,15 @@ export const useUsuarios = () => {
 
     fetchUsuarios();
   }, []);
+  const crearUsuario = async (user: Usuario) => {
+      try {
+        const data = await usuariosService.create(user);
+        setUsuarios((prev) => [...prev, data]);
+        console.log("usuario creada exitosamente:", data);
+      } catch (error) {
+        console.log(`No se pudo crear el usuario: ${error}`);
+      }
+    };
 
-  return { usuarios, loading, error };
+  return { usuarios,crearUsuario, loading, error };
 };

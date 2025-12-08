@@ -1,7 +1,7 @@
 // Definimos todos los métodos que pueden interactuar con los datos de ventas
 import { API_BASE_URL } from "./api/config";
 import { ApiDatos } from "./api/apiDatos";
-import type { Venta } from "../models/types";
+import type { Venta } from "../models/typeVentas";
 
 export const URL = `${API_BASE_URL}/ventas`;
 

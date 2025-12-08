@@ -1,0 +1,84 @@
+@use "../paletaColores";
+
+.ventas-contenedor {
+  padding: 20px;
+
+  .ventas-titulo {
+    color: paletaColores.$rojo-oscuro;
+    margin-bottom: 20px;
+    font-size: 28px;
+  }
+
+  .venta-card {
+    background-color: paletaColores.$blanco-crema;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+
+    h2 {
+      color: paletaColores.$rojo-oscuro;
+      margin-bottom: 16px;
+      font-size: 24px;
+    }
+
+    .venta-cliente-info {
+      margin-bottom: 15px;
+
+      p {
+        margin: 4px 0;
+        color: paletaColores.$gris-oscuro;
+      }
+    }
+
+    .venta-tabla-contenedor {
+      margin-top: 15px;
+
+      .venta-tabla {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+        color: paletaColores.$gris-oscuro;
+
+        th,
+        td {
+          padding: 10px 12px;
+          border: 1px solid paletaColores.$gris-claro;
+          text-align: left;
+          font-size: 14px;
+        }
+
+        th {
+          background-color: paletaColores.$rojo-medio;
+          color: paletaColores.$blanco-puro;
+          font-weight: 600;
+        }
+
+        tbody tr {
+          background-color: paletaColores.$blanco-puro;
+
+          &:hover {
+            background-color: rgba(paletaColores.$rojo-oscuro, 0.3);
+          }
+        }
+
+        tfoot td {
+          font-weight: 600;
+        }
+
+        .td-right {
+          text-align: right;
+        }
+      }
+    }
+
+    .venta-nota {
+      margin-top: 12px;
+
+      p {
+        color: paletaColores.$gris-oscuro;
+        font-size: 15px;
+      }
+    }
+  }
+}

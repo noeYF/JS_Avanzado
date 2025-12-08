@@ -1,7 +1,7 @@
 //Definimos todos los metodos que pueden interactuar con los datos
 import { API_BASE_URL } from "./api/config";
 import { ApiDatos } from "./api/apiDatos";
-import type { Usuario } from "../models/types";
+import type { Usuario } from "../models/typeUsuarios";
 
 export const URL = `${API_BASE_URL}/usuarios`;
 

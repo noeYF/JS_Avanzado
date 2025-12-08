@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import {
-  type ItemVenta,
-  type Cliente,
-  type Producto,
-} from "../../../models/types";
 import { useProductos } from "../../../hook/DatosProductos";
 import { useVentas } from "../../../hook/DatosVentas";
+import type { Cliente } from "../../../models/typeClientes";
+import type { Producto } from "../../../models/typeProducto";
+import type { ItemVenta, Venta } from "../../../models/typeVentas";
+import { generarID } from "../../../util/generarID";
+import "../../../styles/generarNuevos/nuevoVenta.scss";
 
 interface LocationState {
   cliente: Cliente;
 }
+
 interface ProductoConCantidad extends Producto {
   cantidad: number;
 }
@@ -19,41 +20,42 @@ const GenerarVenta = () => {
   const location = useLocation();
   const { cliente } = location.state as LocationState;
   const { productos } = useProductos();
-  const { crearVenta } = useVentas();
+  const { crearVenta, ventas } = useVentas();
 
   const [productoId, setProductoId] = useState("");
+  const [cantidadProductos, setCantidadProductos] = useState(0);
   const [productosVenta, setProductosVenta] = useState<ProductoConCantidad[]>(
     []
   );
-  const [DatosMandar, setDatosMandar] = useState<ItemVenta[]>([]);
-  const [cantidadProductos, setCantidadProductos] = useState(0);
-  const { ventas } = useVentas();
+  const [mensaje, setMensaje] = useState("");
 
-  const generarIdVenta = (): string => {
-    const numeros = ventas.map((v) => Number(v.id.slice(1))); // quita la "v"
-    const max = Math.max(...numeros);
-    return `v${String(max + 1).padStart(3, "0")}`;
-  };
+  const [datosMandar, setDatosMandar] = useState<ItemVenta[]>([]);
 
   const agregarProducto = () => {
     const prod = productos.find((p) => p.id === productoId.trim());
-    if (!prod || productoId.trim() === "" || cantidadProductos <= 0) return;
+    if (!prod || cantidadProductos <= 0) {
+      setMensaje("❌ No se encontró el producto ");
+      return;
+    }
 
+    // si todo está bien
+    setMensaje("✔ Producto agregado correctamente");
+    // Actualiza productosVenta
     setProductosVenta((prev) => {
       const existe = prev.find((p) => p.id === prod.id);
       if (existe) {
         return prev.map((p) =>
           p.id === prod.id
-            ? { ...p, cantidad: (p.cantidad || 1) + cantidadProductos }
+            ? { ...p, cantidad: p.cantidad + cantidadProductos }
             : p
         );
       }
       return [...prev, { ...prod, cantidad: cantidadProductos }];
     });
 
+    // Actualiza datosMandar para enviar
     setDatosMandar((prev) => {
       const existe = prev.find((i) => i.productoId === prod.id);
-
       if (existe) {
         return prev.map((i) =>
           i.productoId === prod.id
@@ -61,123 +63,157 @@ const GenerarVenta = () => {
             : i
         );
       }
-
-      return [...prev, { productoId: prod.id, cantidad: cantidadProductos }];
+      const nuevoItem: ItemVenta = {
+        id: prod.id, // usamos id del producto
+        productoId: prod.id,
+        cantidad: cantidadProductos,
+      };
+      return [...prev, nuevoItem];
     });
+
+    setProductoId("");
+    setCantidadProductos(0);
   };
 
   const generarVenta = () => {
-    const nuevaVenta = {
-      id: generarIdVenta(),
+    if (datosMandar.length === 0) return;
+
+    const nuevaVenta: Venta = {
+      id: generarID("V", ventas),
       cliente: cliente.id,
       fecha: new Date().toISOString(),
-      productos: DatosMandar,
+      productos: datosMandar,
+      comentario: {
+        id: generarID(
+          "VC",
+          ventas.map((v) => v.comentario)
+        ),
+        fecha: new Date().toISOString(),
+        nota: "Venta generada",
+      },
+      cantidadPago: {
+        id: generarID(
+          "VP",
+          ventas.map((v) => v.cantidadPago)
+        ),
+        costogeneral: productosVenta.reduce(
+          (acc, p) => acc + p.precio * p.cantidad,
+          0
+        ),
+        costorIGV: productosVenta.reduce(
+          (acc, p) => acc + p.precio * p.cantidad * 0.18,
+          0
+        ),
+        costoTotal: productosVenta.reduce(
+          (acc, p) => acc + p.precio * p.cantidad * 1.18,
+          0
+        ),
+      },
     };
-    setProductoId("");
-    setCantidadProductos(0);
-    crearVenta(nuevaVenta); // ENVÍA AL BACKEND
+
+    crearVenta(nuevaVenta);
+    setProductosVenta([]);
+    setDatosMandar([]);
   };
 
   return (
-    <div
-      style={{
-        padding: "20px",
-        maxWidth: "450px",
-        margin: "40px auto",
-        background: "black",
-        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
-        borderRadius: "10px",
-        fontFamily: "Arial, sans-serif",
-      }}
-    >
-      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
-        Cliente Seleccionado
-      </h2>
-
+    <div className="generar-venta-container">
+      <h2>Cliente Seleccionado</h2>
       <p>
-        <strong>Nombre:</strong> {cliente.nombre}
+        <strong>Nombre:</strong> {cliente.datosClientes.nombre}{" "}
+        {cliente.datosClientes.apellido}
       </p>
       <p>
-        <strong>DNI:</strong> {cliente.dni}
+        <strong>DNI:</strong> {cliente.datosClientes.DNI}
       </p>
 
-      <hr style={{ margin: "20px 0", opacity: 0.3 }} />
+      <h3>Agregar Producto</h3>
+      <div className="input-group">
+        <label htmlFor="productoId">ID del Producto</label>
+        <input
+          id="productoId"
+          type="text"
+          value={productoId}
+          onChange={(e) => setProductoId(e.target.value)}
+        />
+      </div>
+      <div className="input-group">
+        <label htmlFor="cantidadProductos">Cantidad</label>
+        <input
+          id="cantidadProductos"
+          type="number"
+          value={cantidadProductos}
+          onChange={(e) => setCantidadProductos(Number(e.target.value))}
+        />
+      </div>
+      <button onClick={agregarProducto}>Agregar Producto</button>
+      {mensaje && <p>{mensaje}</p>}
+      <button onClick={generarVenta}>Generar Venta</button>
 
-      <h3 style={{ marginBottom: "10px" }}>Agregar Producto</h3>
+      <h3>Productos agregados:</h3>
+      <table className="tabla-productos">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>ID</th>
+            <th>Precio (S/)</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+            <th>IGV (18%)</th>
+            <th>Total</th>
+          </tr>
+        </thead>
 
-      <input
-        type="text"
-        placeholder="ID del producto"
-        value={productoId}
-        onChange={(e) => setProductoId(e.target.value)}
-        style={{
-          width: "100%",
-          padding: "10px",
-          marginBottom: "12px",
-          borderRadius: "6px",
-          border: "1px solid #bbb",
-          fontSize: "15px",
-        }}
-      />
+        <tbody>
+          {productosVenta.map((p) => {
+            const subtotal = p.precio * p.cantidad;
+            const igv = subtotal * 0.18;
+            const total = subtotal + igv;
 
-      <input
-        type="number"
-        placeholder="Cantidad Producto"
-        value={cantidadProductos}
-        onChange={(e) => setCantidadProductos(Number(e.target.value))}
-        style={{
-          width: "100%",
-          padding: "10px",
-          marginBottom: "12px",
-          borderRadius: "6px",
-          border: "1px solid #bbb",
-          fontSize: "15px",
-        }}
-      />
+            return (
+              <tr key={p.id}>
+                <td>{p.nombre}</td>
+                <td>{p.id}</td>
+                <td>{p.precio}</td>
+                <td>{p.cantidad}</td>
+                <td>{subtotal.toFixed(2)}</td>
+                <td>{igv.toFixed(2)}</td>
+                <td>{total.toFixed(2)}</td>
+              </tr>
+            );
+          })}
+        </tbody>
 
-      <button
-        onClick={agregarProducto}
-        style={{
-          width: "100%",
-          padding: "10px",
-          background: "#007bff",
-          color: "white",
-          border: "none",
-          borderRadius: "6px",
-          fontSize: "16px",
-          cursor: "pointer",
-          marginBottom: "10px",
-        }}
-      >
-        Agregar Producto
-      </button>
-
-      <button
-        onClick={generarVenta}
-        style={{
-          width: "100%",
-          padding: "10px",
-          background: "#28a745",
-          color: "white",
-          border: "none",
-          borderRadius: "6px",
-          fontSize: "16px",
-          cursor: "pointer",
-        }}
-      >
-        Generar Venta
-      </button>
-
-      <h3 style={{ marginTop: "30px" }}>Productos agregados:</h3>
-
-      <ul style={{ paddingLeft: "20px", lineHeight: "1.6" }}>
-        {productosVenta.map((p) => (
-          <li key={p.id}>
-            <strong>{p.nombre}</strong> — ID: {p.id} — Precio: S/{p.precio} —
-            Cantidad: {p.cantidad}
-          </li>
-        ))}
-      </ul>
+        <tfoot>
+          <tr>
+            <td colSpan={4}></td>
+            <td>
+              <strong>
+                S/
+                {productosVenta
+                  .reduce((a, p) => a + p.precio * p.cantidad, 0)
+                  .toFixed(2)}
+              </strong>
+            </td>
+            <td>
+              <strong>
+                S/
+                {productosVenta
+                  .reduce((a, p) => a + p.precio * p.cantidad * 0.18, 0)
+                  .toFixed(2)}
+              </strong>
+            </td>
+            <td>
+              <strong>
+                S/
+                {productosVenta
+                  .reduce((a, p) => a + p.precio * p.cantidad * 1.18, 0)
+                  .toFixed(2)}
+              </strong>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
   );
 };

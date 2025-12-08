@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { ventasServices } from "../services/ventasServices";
-import type { Venta } from "../models/types";
+import type { Venta } from "../models/typeVentas";
 
 export const useVentas = () => {
   const [ventas, setVentas] = useState<Venta[]>([]);
@@ -15,7 +15,7 @@ export const useVentas = () => {
         setVentas(data);
       } catch (err) {
         setError(`Error al cargar ventas: ${err}`);
-        console.log(`Error carga de ventas: ${err}`);
+        console.log(`Error carga de ventas este es : ${err}`);
       } finally {
         setLoading(false);
       }

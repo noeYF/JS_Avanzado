@@ -1,0 +1,47 @@
+@use "../paletaColores";
+
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  background-image: url("/src/assets/login/7283494.jpg"); // tu imagen
+  background-size: cover; // que ocupe toda la pantalla
+  background-position: center;
+  background-repeat: no-repeat;
+  .fondo {
+    margin-top: 80px;
+
+    .login-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background-color: rgba(0, 0, 0, 0.2);
+      height: auto;
+      padding: 30px;
+      border-radius: 30px;
+      form {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        .form-group {
+          width: 100%;
+          label {
+            color: paletaColores.$negro-profundo;
+            font-size: 17px;
+          }
+        }
+        button {
+          background-color: paletaColores.$blanco-crema;
+          transition: 0.5s;
+          &:hover{
+             background-color: paletaColores.$gris-medio;
+          }
+        }
+      }
+    }
+  }
+}
