@@ -1,73 +1,99 @@
-# React + TypeScript + Vite
+# Sistema de Gestión de Ventas, Clientes y Productos de una Farmacia
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción del Sistema
 
-Currently, two official plugins are available:
+Este sistema permite la gestión integral de una farmacia, incluyendo ventas, clientes y productos. Está desarrollado en **React** y **TypeScript**, y está diseñado para:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Registrar operaciones de ventas.
+- Calcular automáticamente costos e impuestos.
+- Consultar históricos de ventas.
+- Agilizar los procesos de búsqueda, listado y guardado de datos.
 
-## React Compiler
+El sistema está pensado para ser fácil de usar, con una interfaz intuitiva, componentes reutilizables y separación de responsabilidades según distintos roles de usuario.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tabla de Contenidos
 
-## Expanding the ESLint configuration
+- [Características Principales](#características-principales)
+- [Tecnologías Utilizadas](#tecnologías-utilizadas)
+- [Requisitos](#requisitos)
+- [Instalación](#instalación)
+- [Uso del Sistema](#uso-del-sistema)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Contribuciones](#contribuciones)
+- [Licencia](#licencia)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Características Principales
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Crear, editar y eliminar clientes y productos.
+- Registrar ventas con cálculo automático de totales e impuestos.
+- Visualizar y buscar información histórica de manera eficiente.
+- Interfaz responsiva y adaptada a distintos dispositivos.
+- Listados y reportes para análisis (opcional según implementación).
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Tecnologías Utilizadas
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Frontend:** React, TypeScript, SCSS
+- **Gestión de Estado:** useState, useContext o Redux
+- **Control de Versiones:** Git
+
+## Requisitos
+
+Antes de instalar y ejecutar el sistema, asegúrate de tener:
+
+- Node.js >= 18.x
+- npm o yarn
+- Git
+- (Opcional) Base de datos si tu proyecto usa backend
+
+## Instalación
+
+1. Clona el repositorio:
+
+```bash
+git clone https://github.com/noeYF/JS_Avanzado.git
+cd JS_Avanzado
+npm install
+npm start
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Uso del Sistema
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Abre tu navegador en http://localhost:3000 (o el puerto que indique la consola al iniciar)
+2. Ingresa con tu cuenta; si no tienes una, crea una nueva con el rol correspondiente.
+3. Navega entre las secciones de Clientes, Productos y Ventas.
+4. Usa las funcionalidades de búsqueda, listado y registro de datos según tu rol.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Estructura-del-proyecto
+
+/JS_Avanzado
+│
+├── /db
+├── /public
+├── /src
+│ ├── /assets # Recursos como imágenes o iconos
+│ ├── /components # Componentes React reutilizables
+│ ├── /hook # Custom hooks
+│ ├── /layouts # Layouts del sistema
+│ ├── /models # Interfaces y tipos
+│ ├── /pages # Páginas principales
+│ ├── /services # Servicios de API o lógica de negocio
+│ ├── /styles # Archivos SCSS o CSS
+│ ├── /utils # Funciones auxiliares
+│ ├── App.tsx
+│ └── index.tsx
+├── package.json
+├── README.md
+└── tsconfig.json
+
+## Contribuciones
+
+1. Jair Alexander Porras Palpa
+2. Acosta Ticona Yazid Juan
+3. Mayta Orozco Carlos Andres
+4. Yallico Flores Noe Benjamin
+5. Diego Martin Torres Mamani
+
+## Licencia
+
+Este proyecto es un **trabajo universitario** realizado por los estudiantes indicados en la sección de contribuciones, con fines **académicos y educativos**.  
+No está destinado a uso comercial. Puedes usarlo y estudiarlo, pero **no puedes venderlo ni distribuirlo sin permiso de los autores**.

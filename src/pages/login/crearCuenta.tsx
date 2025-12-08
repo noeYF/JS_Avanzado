@@ -153,7 +153,6 @@ export const CrearUsuario = () => {
                       rol: {
                         ...prev.rol,
                         rol: e.target.value as
-                          | "ADMIN"
                           | "ALMACENERO"
                           | "VENDEDOR"
                           | "SUPERVISOR",
@@ -164,7 +163,6 @@ export const CrearUsuario = () => {
                   <option value="VENDEDOR">Vendedor</option>
                   <option value="ALMACENERO">Almacenero</option>
                   <option value="SUPERVISOR">Supervisor</option>
-                  <option value="ADMIN">Admin</option>
                 </select>
               </div>
               {/* nombre */}

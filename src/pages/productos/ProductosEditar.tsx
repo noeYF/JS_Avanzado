@@ -12,15 +12,39 @@ function ProductosEditar() {
     id: "",
     nombre: "",
     precio: 0,
-    proveedor: { id: "", nombre: "", telefono: "", direccion: "" },
-    catidades: { id: "", catidad: 0, cantidadMinima: 0 },
+    proveedor: {
+      id: "",
+      nombre: "",
+      telefono: "",
+      direccion: "",
+    },
+    catidades: {
+      id: "",
+      catidad: 0,
+      cantidadMinima: 0,
+    },
     datosProductos: {
       id: "",
       fechaCreacion: new Date().toISOString(),
       fechaVencimiento: new Date().toISOString(),
       descripcion: "",
     },
-  });
+    estado: {
+      id: "",
+      estado: "aire libre", // valor por defecto
+    },
+    categoria: {
+      id: "",
+      categoria: "Venta Libre", // valor por defecto
+      descripcion: "",
+    },
+    marca: {
+      id: "",
+      nombre: "",
+      paisOrigen: "",
+      descripcion: "",
+    },
+  }); 
 
   useEffect(() => {
     const cargarProducto = async () => {
@@ -28,8 +52,6 @@ function ProductosEditar() {
 
       const data = await traerProducto(id);
       if (data) {
-      
-
         setProducto(data);
       }
     };
@@ -194,6 +216,64 @@ function ProductosEditar() {
                 ...producto.datosProductos,
                 descripcion: e.target.value,
               },
+            })
+          }
+        />
+
+        {/* Estado */}
+        <label htmlFor="input12">Estado:</label>
+        <select
+          id="input12"
+          style={{ display: "block" }}
+          value={producto.estado?.estado || "aire libre"}
+          onChange={(e) =>
+            setProducto({
+              ...producto,
+              estado: {
+                ...producto.estado,
+                estado: e.target.value as "refrigerado" | "aire libre",
+              },
+            })
+          }
+        >
+          <option value="refrigerado">Refrigerado</option>
+          <option value="aire libre">Aire libre</option>
+        </select>
+
+        {/* Categoría */}
+        <label htmlFor="input13">Categoría:</label>
+        <select
+          id="input13"
+          style={{ display: "block" }}
+          value={producto.categoria?.categoria || "Venta Libre"}
+          onChange={(e) =>
+            setProducto({
+              ...producto,
+              categoria: {
+                ...producto.categoria,
+                categoria: e.target.value as
+                  | "Venta Libre"
+                  | "Prescripción"
+                  | "Especialisado",
+              },
+            })
+          }
+        >
+          <option value="Venta Libre">Venta Libre</option>
+          <option value="Prescripción">Prescripción</option>
+          <option value="Especialisado">Especialisado</option>
+        </select>
+
+        {/* Marca */}
+        <label htmlFor="input14">Marca:</label>
+        <input
+          id="input14"
+          type="text"
+          value={producto.marca?.nombre || ""}
+          onChange={(e) =>
+            setProducto({
+              ...producto,
+              marca: { ...producto.marca, nombre: e.target.value },
             })
           }
         />

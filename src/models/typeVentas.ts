@@ -11,14 +11,14 @@ export interface cantidadPago {
   costoTotal: number;
 }
 export interface ComentarioVenta {
-  id: string; // id único del comentario   // referencia a la venta
-  fecha: string; // cuándo se hizo el comentario
-  nota: string; // tu comentario sobre la venta, actitud del cliente, observaciones, etc.
+  id: string;
+  fecha: string;
+  nota: string;
 }
 
 export interface Venta {
   id: string;
-  cliente: string; // clienteId → RELACIÓN con Cliente
+  cliente: string;
   fecha: string;
   productos: ItemVenta[];
   comentario: ComentarioVenta;

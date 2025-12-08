@@ -9,10 +9,32 @@ function ProductosNuevo() {
   const [producto, setProducto] = useState<ProductoCreate>({
     nombre: "",
     precio: 0,
-
-    proveedor: { nombre: "", telefono: "", direccion: "" },
-    catidades: { catidad: 0, cantidadMinima: 0 },
-    datosProductos: { fechaCreacion: "", fechaVencimiento: "" },
+    proveedor: {
+      nombre: "",
+      telefono: "",
+      direccion: "",
+    },
+    catidades: {
+      catidad: 0,
+      cantidadMinima: 0,
+    },
+    datosProductos: {
+      fechaCreacion: new Date().toISOString(),
+      fechaVencimiento: new Date().toISOString(),
+      descripcion: "",
+    },
+    estado: {
+      estado: "aire libre", // valor por defecto
+    },
+    categoria: {
+      categoria: "Venta Libre", // valor por defecto
+      descripcion: "",
+    },
+    marca: {
+      nombre: "",
+      paisOrigen: "",
+      descripcion: "",
+    },
   });
 
   const guardar = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -32,7 +54,7 @@ function ProductosNuevo() {
       catidades: {
         ...producto.catidades,
         id: generarID(
-          "CNT",
+          "CT",
           productos.map((p) => p.catidades)
         ),
       },
@@ -41,6 +63,27 @@ function ProductosNuevo() {
         id: generarID(
           "DP",
           productos.map((p) => p.datosProductos)
+        ),
+      },
+      estado: {
+        ...producto.estado,
+        id: generarID(
+          "EM",
+          productos.map((p) => p.estado)
+        ),
+      },
+      categoria: {
+        ...producto.categoria,
+        id: generarID(
+          "CA",
+          productos.map((p) => p.categoria)
+        ),
+      },
+      marca: {
+        ...producto.marca,
+        id: generarID(
+          "MA",
+          productos.map((p) => p.marca)
         ),
       },
     };
@@ -53,9 +96,32 @@ function ProductosNuevo() {
     setProducto({
       nombre: "",
       precio: 0,
-      proveedor: { nombre: "", telefono: "", direccion: "" },
-      catidades: { catidad: 0, cantidadMinima: 0 },
-      datosProductos: { fechaCreacion: "", fechaVencimiento: "" },
+      proveedor: {
+        nombre: "",
+        telefono: "",
+        direccion: "",
+      },
+      catidades: {
+        catidad: 0,
+        cantidadMinima: 0,
+      },
+      datosProductos: {
+        fechaCreacion: new Date().toISOString(),
+        fechaVencimiento: new Date().toISOString(),
+        descripcion: "",
+      },
+      estado: {
+        estado: "aire libre", // valor por defecto
+      },
+      categoria: {
+        categoria: "Venta Libre", // valor por defecto
+        descripcion: "",
+      },
+      marca: {
+        nombre: "",
+        paisOrigen: "",
+        descripcion: "",
+      },
     });
   };
 
@@ -88,6 +154,7 @@ function ProductosNuevo() {
               />
             </label>
           </div>
+
           {/* PROVEEDOR */}
           <div className="provedor">
             <h4>Provedor</h4>
@@ -124,7 +191,7 @@ function ProductosNuevo() {
                   }
                 />
               </label>
-              <label className="direccion"> 
+              <label className="direccion">
                 <h6>Dirección</h6>
                 <input
                   type="text"
@@ -142,6 +209,7 @@ function ProductosNuevo() {
               </label>
             </div>
           </div>
+
           {/* CANTIDADES */}
           <div className="inventario">
             <h4>Inventario</h4>
@@ -180,6 +248,7 @@ function ProductosNuevo() {
               </label>
             </div>
           </div>
+
           {/* DATOS DEL PRODUCTO */}
           <div className="info-produc">
             <h4>Información del producto</h4>
@@ -188,7 +257,7 @@ function ProductosNuevo() {
                 <h6>Fecha de creación</h6>
                 <input
                   type="date"
-                  value={producto.datosProductos.fechaCreacion}
+                  value={producto.datosProductos.fechaCreacion.split("T")[0]}
                   onChange={(e) =>
                     setProducto({
                       ...producto,
@@ -201,10 +270,10 @@ function ProductosNuevo() {
                 />
               </label>
               <label className="fc-v">
-                <h6 >Fecha de vencimiento</h6>
+                <h6>Fecha de vencimiento</h6>
                 <input
                   type="date"
-                  value={producto.datosProductos.fechaVencimiento}
+                  value={producto.datosProductos.fechaVencimiento.split("T")[0]}
                   onChange={(e) =>
                     setProducto({
                       ...producto,
@@ -233,7 +302,104 @@ function ProductosNuevo() {
               </label>
             </div>
           </div>
-          <div className="boton"><button type="submit">Guardar</button></div>
+
+          {/* ESTADO */}
+          <div className="conteiner-nuevo">
+            <div className="estado">
+              <label>
+                <h6>Estado</h6>
+                <select
+                  style={{ display: "block" }}
+                  value={producto.estado?.estado || "aire libre"}
+                  onChange={(e) =>
+                    setProducto({
+                      ...producto,
+                      estado: {
+                        ...producto.estado,
+                        estado: e.target.value as "refrigerado" | "aire libre",
+                      },
+                    })
+                  }
+                >
+                  <option value="refrigerado">Refrigerado</option>
+                  <option value="aire libre">Aire libre</option>
+                </select>
+              </label>
+            </div>
+            {/* CATEGORÍA */}
+            <div className="categoria">
+              <label>
+                <h6>Categoría</h6>
+                <select
+                  style={{ display: "block" }}
+                  value={producto.categoria?.categoria || "Venta Libre"}
+                  onChange={(e) =>
+                    setProducto({
+                      ...producto,
+                      categoria: {
+                        ...producto.categoria,
+                        categoria: e.target.value as
+                          | "Venta Libre"
+                          | "Prescripción"
+                          | "Especialisado",
+                      },
+                    })
+                  }
+                >
+                  <option value="Venta Libre">Venta Libre</option>
+                  <option value="Prescripción">Prescripción</option>
+                  <option value="Especialisado">Especialisado</option>
+                </select>
+              </label>
+            </div>
+            {/* MARCA */}
+            <div className="marca">
+              <label>
+                <h6>Marca</h6>
+                <input
+                  type="text"
+                  value={producto.marca?.nombre || ""}
+                  onChange={(e) =>
+                    setProducto({
+                      ...producto,
+                      marca: { ...producto.marca, nombre: e.target.value },
+                    })
+                  }
+                />
+              </label>
+              <label>
+                <h6>País de origen</h6>
+                <input
+                  type="text"
+                  value={producto.marca?.paisOrigen || ""}
+                  onChange={(e) =>
+                    setProducto({
+                      ...producto,
+                      marca: { ...producto.marca, paisOrigen: e.target.value },
+                    })
+                  }
+                />
+              </label>
+              <div className="descripcion">
+                <label>
+                  <h6>Descripción de la marca</h6>
+                  <textarea
+                    value={producto.marca?.descripcion || ""}
+                    onChange={(e) =>
+                      setProducto({
+                        ...producto,
+                        marca: { ...producto.marca, descripcion: e.target.value },
+                      })
+                    }
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div className="boton">
+            <button type="submit">Guardar</button>
+          </div>
         </form>
       </div>
     </div>

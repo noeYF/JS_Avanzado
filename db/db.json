@@ -99,12 +99,37 @@
         "referencias": "carretera central ",
         "id": "CC-0003"
       }
+    },
+    {
+      "id": "USR-0004",
+      "datosCuenta": {
+        "user": "juan",
+        "pass": "juan",
+        "id": "ACC-0004"
+      },
+      "rol": {
+        "rol": "VENDEDOR",
+        "id": "ROL-0004"
+      },
+      "datosPersonales": {
+        "nombre": "juan",
+        "apellido": "juan",
+        "edad": 12,
+        "DNI": "343444343",
+        "id": "DP-0004"
+      },
+      "canalesContactos": {
+        "telefono": "343434433434",
+        "direccion": "san Mateo",
+        "referencias": "carretera central",
+        "id": "CC-0004"
+      }
     }
   ],
   "productos": [
     {
       "id": "P-0000",
-      "nombre": "Paracetamol 500mg refrigerar ¿",
+      "nombre": "Paracetamol 500mg refrigerar jair",
       "precio": 10.5,
       "proveedor": {
         "id": "PR-001",
@@ -122,12 +147,27 @@
         "fechaCreacion": "2025-12-01",
         "fechaVencimiento": "2026-12-01",
         "descripcion": "Tabletas de paracetamol 500mg, caja x 20"
+      },
+      "estado": {
+        "id": "EM-001",
+        "estado": "refrigerado"
+      },
+      "categoria": {
+        "id": "CA-001",
+        "categoria": "Venta Libre",
+        "descripcion": "Medicamento sin receta"
+      },
+      "marca": {
+        "id": "MA-001",
+        "nombre": "Farmacos",
+        "paisOrigen": "Perú",
+        "descripcion": "Marca de confianza"
       }
     },
     {
       "id": "P-0001",
-      "nombre": "Ibuprofeno 400mg",
-      "precio": 12,
+      "nombre": "Ibuprofeno 400mg franco",
+      "precio": 17,
       "proveedor": {
         "id": "PR-002",
         "nombre": "Laboratorios Andes",
@@ -144,6 +184,21 @@
         "fechaCreacion": "2025-12-02",
         "fechaVencimiento": "2026-06-01",
         "descripcion": "Tabletas de ibuprofeno 400mg, caja x 20"
+      },
+      "estado": {
+        "id": "EM-002",
+        "estado": "aire libre"
+      },
+      "categoria": {
+        "id": "CA-002",
+        "categoria": "Especialisado",
+        "descripcion": "Medicamento bajo prescripción médica"
+      },
+      "marca": {
+        "id": "MA-002",
+        "nombre": "Andes Labs",
+        "paisOrigen": "Perú",
+        "descripcion": "Laboratorio reconocido"
       }
     },
     {
@@ -166,6 +221,21 @@
         "fechaCreacion": "2025-12-03",
         "fechaVencimiento": "2027-01-01",
         "descripcion": "Cápsulas de vitamina C 500mg, frasco x 60"
+      },
+      "estado": {
+        "id": "EM-003",
+        "estado": "aire libre"
+      },
+      "categoria": {
+        "id": "CA-003",
+        "categoria": "Venta Libre",
+        "descripcion": "Suplemento alimenticio"
+      },
+      "marca": {
+        "id": "MA-003",
+        "nombre": "Vitaminas Perú",
+        "paisOrigen": "Perú",
+        "descripcion": "Marca de vitaminas"
       }
     },
     {
@@ -188,6 +258,58 @@
         "fechaCreacion": "2025-12-04",
         "fechaVencimiento": "2026-12-30",
         "descripcion": "Jarabe para la tos, frasco 120ml"
+      },
+      "estado": {
+        "id": "EM-004",
+        "estado": "refrigerado"
+      },
+      "categoria": {
+        "id": "CA-004",
+        "categoria": "Venta Libre",
+        "descripcion": "Jarabe sin prescripción"
+      },
+      "marca": {
+        "id": "MA-004",
+        "nombre": "Jarabes Cía",
+        "paisOrigen": "Perú",
+        "descripcion": "Marca especializada en jarabes"
+      }
+    },
+    {
+      "id": "P-0004",
+      "nombre": "jari",
+      "precio": 23,
+      "proveedor": {
+        "nombre": "franco",
+        "telefono": "89898989",
+        "direccion": "carretera centrarl 23",
+        "id": "PROV-0000"
+      },
+      "catidades": {
+        "catidad": 1222,
+        "cantidadMinima": 12,
+        "id": "CT-0005"
+      },
+      "datosProductos": {
+        "fechaCreacion": "2025-12-01",
+        "fechaVencimiento": "2026-08-06",
+        "descripcion": "producto fragil",
+        "id": "DP-0005"
+      },
+      "estado": {
+        "estado": "refrigerado",
+        "id": "EM-0005"
+      },
+      "categoria": {
+        "categoria": "Especialisado",
+        "descripcion": "",
+        "id": "CA-0005"
+      },
+      "marca": {
+        "nombre": "peru puede ",
+        "paisOrigen": "colombia",
+        "descripcion": "fragil vidrio y specialisado",
+        "id": "MA-0005"
       }
     }
   ],

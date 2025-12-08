@@ -42,6 +42,9 @@ const BuscarEspecificamente = () => {
             <th>Cantidad mínima</th>
             <th>Fecha creación</th>
             <th>Fecha vencimiento</th>
+            <th>Estado</th> {/* NUEVO */}
+            <th>Categoría</th> {/* NUEVO */}
+            <th>Marca</th> {/* NUEVO */}
             <th>Acciones</th>
           </tr>
         </thead>
@@ -50,7 +53,7 @@ const BuscarEspecificamente = () => {
             <tr key={p.id}>
               <td>{p.id}</td>
               <td>{p.nombre}</td>
-              <td>S/ {p.precio.toFixed(2)}</td>
+              <td>$/{p.precio.toFixed(2)}</td>
               <td>{p.proveedor.nombre}</td>
               <td>{p.proveedor.telefono}</td>
               <td>{p.proveedor.direccion}</td>
@@ -58,12 +61,12 @@ const BuscarEspecificamente = () => {
               <td>{p.catidades.cantidadMinima}</td>
               <td>{p.datosProductos.fechaCreacion}</td>
               <td>{p.datosProductos.fechaVencimiento}</td>
+              <td>{p.estado.estado}</td> {/* NUEVO */}
+              <td>{p.categoria.categoria}</td> {/* NUEVO */}
+              <td>{p.marca.nombre}</td> {/* NUEVO */}
               <td>
-                <button className="editar" onClick={() => editar(p.id)}>
-                  Editar
-                </button>
+                <button onClick={() => editar(p.id)}>Editar</button>
                 <button
-                  className="eliminar"
                   onClick={() => {
                     if (
                       window.confirm(

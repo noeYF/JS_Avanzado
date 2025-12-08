@@ -33,6 +33,9 @@ const BuscarAlfabetico = () => {
             <th>Cantidad mínima</th>
             <th>Fecha creación</th>
             <th>Fecha vencimiento</th>
+            <th>Estado</th> {/* NUEVO */}
+            <th>Categoría</th> {/* NUEVO */}
+            <th>Marca</th> {/* NUEVO */}
             <th>Acciones</th>
           </tr>
         </thead>
@@ -49,6 +52,9 @@ const BuscarAlfabetico = () => {
               <td>{p.catidades.cantidadMinima}</td>
               <td>{p.datosProductos.fechaCreacion}</td>
               <td>{p.datosProductos.fechaVencimiento}</td>
+              <td>{p.estado.estado}</td> {/* NUEVO */}
+              <td>{p.categoria.categoria}</td> {/* NUEVO */}
+              <td>{p.marca.nombre}</td> {/* NUEVO */}
               <td>
                 <button onClick={() => editar(p.id)}>Editar</button>
                 <button
