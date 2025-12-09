@@ -1,0 +1,85 @@
+@use "paletaColores";
+
+.Nav {
+  position: fixed;
+  background-color: paletaColores.$gris-claro;
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0 20px;
+  border: black solid 1px;
+z-index: 999;
+  .Contenedor {
+    .Rutas {
+      li {
+        display: flex;
+        align-items: center;
+        margin-left: 5px;
+        border-radius: 10px;
+        transition: 0.7s;
+flex-direction: row;
+        a {
+          padding: 10px 20px;
+          text-align: end;
+          color: black;
+          font-size: 15px;
+          border-radius: 5px;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          &:hover {
+            background-color: paletaColores.$negro-profundo;
+            color: paletaColores.$blanco-crema;
+          }
+          &.active{
+            background-color: paletaColores.$gris-medio ;
+            color: paletaColores.$blanco-puro;
+            transition: 0.5s;
+          }
+        }
+      }
+    }
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: black;
+
+      .imgLogo {
+        height: 80px; // altura que quieras
+        width: auto; // mantiene proporción
+      }
+
+      h2 {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .inicioSecion {
+    margin-left: 20px;
+    border-radius: 20px;
+
+    .boton {
+      padding: 10px 20px;
+      font-size: 15px;
+      background-color: paletaColores.$rojo-oscuro;
+      color: paletaColores.$blanco-puro;
+      transition: 0.7s;
+      &:hover {
+        background-color: paletaColores.$gris-medio;
+        color: paletaColores.$gris-oscuro;
+        border: black solid 1px;
+      }
+    }
+  }
+}

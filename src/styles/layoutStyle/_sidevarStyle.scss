@@ -1,0 +1,43 @@
+@use "../paletaColores";
+
+.sidebar-base {
+  width: 200px;
+  position: fixed;
+  left: 0;
+  margin-top: 80px;
+  height: calc(100vh - 80px);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: rgba(paletaColores.$rojo-medio, 0.5);
+
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: contain;
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    margin-left: 20px;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    a {
+      background-color: paletaColores.$rojo-medio;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    a.activo {
+      background-color: paletaColores.$rojo-oscuro;
+      transition: 0.6s;
+    }
+  }
+}

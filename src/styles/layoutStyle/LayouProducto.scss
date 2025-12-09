@@ -1,0 +1,22 @@
+@use "../layoutStyle/sidevarStyle";
+@use "../paletaColores";
+
+.layout-producto {
+  display: flex;
+  height: 100vh;
+
+  .sidebar {
+    @extend .sidebar-base;
+    
+    background-image: url("../../assets/layoutIMG/layout-removebg-preview.png");
+  }
+
+  .main-content {
+    width: calc(100vw - 200px);
+    height: auto;
+    margin-top: 80px;
+    margin-left:200px;
+    padding: 20px;
+
+  }
+}

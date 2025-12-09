@@ -1,77 +1,105 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import type { Venta } from "../../models/types";
+import { useVentas } from "../../hook/DatosVentas";
+import { useProductos } from "../../hook/DatosProductos";
+import { useClientes } from "../../hook/DatosClientes";
+import type { Venta, ItemVenta } from "../../models/typeVentas";
+import type { Cliente } from "../../models/typeClientes";
+import type { Producto } from "../../models/typeProducto";
+import "../../styles/tablasGeneral/tablasVentas.scss"
 
-function VentasListado() {
-  const [ventas, setVentas] = useState<Venta[]>([]);
-  const navigate = useNavigate();
-
-  const cargar = async () => {
-    const res = await fetch("http://localhost:3001/ventas");
-    const data: Venta[] = await res.json();
-    setVentas(data);
-  };
-
-  useEffect(() => {
-    cargar();
-  }, []);
-
-  const eliminar = async (id: string | number) => {
-    try {
-      const res = await fetch(
-        `http://localhost:3001/ventas/${id}`,
-        { method: "DELETE" }
-      );
-
-      if (!res.ok) {
-        throw new Error(`Status: ${res.status}`);
-      }
-
-      alert("Venta eliminada correctamente");
-      cargar();
-    } catch (error) {
-      alert("Error al eliminar");
-      console.error(error);
-    }
-  };
-
-  const editar = (id: string | number) => {
-    navigate(`/ventas/editar/${id}`);
-  };
+const TestVentasTabla = () => {
+  const { ventas } = useVentas();
+  const { productos } = useProductos();
+  const { Clientes } = useClientes();
 
   return (
-    <div className="table-box">
-      <h2>Lista de Ventas</h2>
+    <div className="ventas-contenedor">
+      <h1 className="ventas-titulo">Ventas Registradas</h1>
 
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Cliente</th>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>Fecha</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {ventas.map((v) => (
-            <tr key={v.id}>
-              <td>{v.id}</td>
-              <td>{v.cliente}</td>
-              <td>{v.producto}</td>
-              <td>{v.cantidad}</td>
-              <td>{v.fecha}</td>
-              <td>
-                <button onClick={() => editar(v.id)}>Editar</button>
-                <button onClick={() => eliminar(v.id)}>Eliminar</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {ventas.map((venta: Venta) => {
+        const cliente: Cliente | undefined = Clientes.find(
+          (c) => c.id === venta.cliente
+        );
+
+        return (
+          <div key={venta.id} className="venta-card">
+            <h2 className="venta-id">Venta ID: {venta.id}</h2>
+
+            <div className="venta-cliente-info">
+              <p>
+                <strong>Cliente:</strong> {cliente?.datosClientes.nombre}{" "}
+                {cliente?.datosClientes.apellido}
+              </p>
+              <p>
+                <strong>DNI:</strong> {cliente?.datosClientes.DNI}
+              </p>
+            </div>
+
+            <div className="venta-tabla-contenedor">
+              <table className="venta-tabla">
+                <thead>
+                  <tr>
+                    <th>ID Producto</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Subtotal</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {venta.productos.map((item: ItemVenta) => {
+                    const prod: Producto | undefined = productos.find(
+                      (p) => p.id === item.productoId
+                    );
+                    const subtotal = prod ? prod.precio * item.cantidad : 0;
+
+                    return (
+                      <tr key={item.productoId}>
+                        <td>{item.productoId}</td>
+                        <td>{prod?.nombre || "Producto no encontrado"}</td>
+                        <td>{item.cantidad}</td>
+                        <td>{prod ? prod.precio.toFixed(2) : "-"}</td>
+                        <td>{subtotal.toFixed(2)}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+
+                <tfoot>
+                  <tr>
+                    <td colSpan={4} className="td-right">
+                      Costo General:
+                    </td>
+                    <td>{venta.cantidadPago.costogeneral.toFixed(2)}</td>
+                  </tr>
+
+                  <tr>
+                    <td colSpan={4} className="td-right">
+                      IGV (18%):
+                    </td>
+                    <td>{venta.cantidadPago.costorIGV.toFixed(2)}</td>
+                  </tr>
+
+                  <tr>
+                    <td colSpan={4} className="td-right">
+                      Total:
+                    </td>
+                    <td>{venta.cantidadPago.costoTotal.toFixed(2)}</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+
+            <div className="venta-nota">
+              <p>
+                <strong>Nota:</strong> {venta.comentario.nota}
+              </p>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
-}
+};
 
-export default VentasListado;
+export default TestVentasTabla;

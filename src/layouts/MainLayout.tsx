@@ -1,6 +1,7 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import NavBar from "../components/NavBar";
+/* import NavBar from "../components/NavBar"; */
+import NavTest from "../components/NavTest"
 
 function MainLayout() {
   const navigate = useNavigate();
@@ -15,10 +16,8 @@ function MainLayout() {
 
   return (
     <div>
-      <NavBar />
-      <div className="container mt-4">
-        <Outlet />
-      </div>
+      <NavTest />
+      <Outlet />
     </div>
   );
 }

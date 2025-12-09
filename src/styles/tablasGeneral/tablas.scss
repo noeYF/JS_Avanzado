@@ -1,0 +1,63 @@
+@use "../paletaColores";
+
+.table-box {
+  background-color: paletaColores.$blanco-crema;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-left: 0px;
+  h2 {
+    color: paletaColores.$rojo-oscuro;
+    margin-bottom: 16px;
+    font-size: 24px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    color: paletaColores.$gris-oscuro;
+
+    th,
+    td {
+      padding: 10px 12px;
+      border: 1px solid paletaColores.$gris-claro;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      background-color: paletaColores.$rojo-medio;
+      color: paletaColores.$blanco-puro;
+      font-weight: 600;
+    }
+
+    tbody tr {
+      background-color: paletaColores.$blanco-puro;
+
+      &:hover {
+        background-color: rgba(paletaColores.$rojo-oscuro, 0.3);
+      }
+    }
+  }
+
+  // Botones
+  button {
+    padding: 6px 12px;
+    margin-right: 6px;
+
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    width: 90%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: paletaColores.$gris-oscuro;
+    color: white;
+    &:hover {
+      background-color: paletaColores.$rojo-oscuro;
+      color: paletaColores.$blanco-puro;
+    }
+  }
+}

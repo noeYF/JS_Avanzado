@@ -1,88 +1,557 @@
 {
   "usuarios": [
     {
-      "id": "1",
-      "user": "admin",
-      "pass": "1234",
-      "rol": "ADMIN"
+      "id": "USR-0000",
+      "datosCuenta": {
+        "user": "jair",
+        "pass": "jari",
+        "id": "ACC-0000"
+      },
+      "rol": {
+        "rol": "ADMIN",
+        "id": "ROL-0000"
+      },
+      "datosPersonales": {
+        "nombre": "jari",
+        "apellido": "porraspalpa",
+        "edad": 23,
+        "DNI": "2323232323",
+        "id": "DP-0000"
+      },
+      "canalesContactos": {
+        "telefono": "960118427",
+        "direccion": "san Mateo",
+        "referencias": "carretera central km42",
+        "id": "CC-0000"
+      }
     },
     {
-      "id": "2",
-      "user": "vendedor",
-      "pass": "1234",
-      "rol": "VENDEDOR"
+      "id": "USR-0001",
+      "datosCuenta": {
+        "user": "franco",
+        "pass": "franco",
+        "id": "ACC-0001"
+      },
+      "rol": {
+        "rol": "ALMACENERO",
+        "id": "ROL-0001"
+      },
+      "datosPersonales": {
+        "nombre": "franco",
+        "apellido": "porras",
+        "edad": 2,
+        "DNI": "232323232223",
+        "id": "DP-0001"
+      },
+      "canalesContactos": {
+        "telefono": "342235352",
+        "direccion": "san Mateo",
+        "referencias": "carretera",
+        "id": "CC-0001"
+      }
     },
     {
-      "id": "3",
-      "user": "almacenero",
-      "pass": "1234",
-      "rol": "ALMACENERO"
+      "id": "USR-0002",
+      "datosCuenta": {
+        "user": "patitas",
+        "pass": "patitas",
+        "id": "ACC-0002"
+      },
+      "rol": {
+        "rol": "VENDEDOR",
+        "id": "ROL-0002"
+      },
+      "datosPersonales": {
+        "nombre": "jari",
+        "apellido": "porrasPalpa",
+        "edad": 18,
+        "DNI": "898989",
+        "id": "DP-0002"
+      },
+      "canalesContactos": {
+        "telefono": "89898989",
+        "direccion": "San juan",
+        "referencias": "carretera central km 78",
+        "id": "CC-0002"
+      }
     },
     {
-      "id": "4",
-      "user": "cajero",
-      "pass": "1234",
-      "rol": "CAJERO"
+      "id": "USR-0003",
+      "datosCuenta": {
+        "user": "juan",
+        "pass": "juan",
+        "id": "ACC-0003"
+      },
+      "rol": {
+        "rol": "SUPERVISOR",
+        "id": "ROL-0003"
+      },
+      "datosPersonales": {
+        "nombre": "jair",
+        "apellido": "jair",
+        "edad": 1217,
+        "DNI": "89898",
+        "id": "DP-0003"
+      },
+      "canalesContactos": {
+        "telefono": "89898989",
+        "direccion": "san Mateo",
+        "referencias": "carretera central ",
+        "id": "CC-0003"
+      }
     },
     {
-      "id": "5",
-      "user": "supervisor",
-      "pass": "1234",
-      "rol": "SUPERVISOR"
+      "id": "USR-0004",
+      "datosCuenta": {
+        "user": "juan",
+        "pass": "juan",
+        "id": "ACC-0004"
+      },
+      "rol": {
+        "rol": "VENDEDOR",
+        "id": "ROL-0004"
+      },
+      "datosPersonales": {
+        "nombre": "juan",
+        "apellido": "juan",
+        "edad": 12,
+        "DNI": "343444343",
+        "id": "DP-0004"
+      },
+      "canalesContactos": {
+        "telefono": "343434433434",
+        "direccion": "san Mateo",
+        "referencias": "carretera central",
+        "id": "CC-0004"
+      }
     }
   ],
   "productos": [
     {
-      "nombre": "paracatemol",
-      "precio": "2",
-      "id": "2b99"
+      "id": "P-0000",
+      "nombre": "Paracetamol 500mg refrigerar jair",
+      "precio": 10.5,
+      "proveedor": {
+        "id": "PR-001",
+        "nombre": "Farmacos S.A.",
+        "telefono": "987654321",
+        "direccion": "Av. Salud 123"
+      },
+      "catidades": {
+        "id": "CT-001",
+        "catidad": 100,
+        "cantidadMinima": 20
+      },
+      "datosProductos": {
+        "id": "DP-001",
+        "fechaCreacion": "2025-12-01",
+        "fechaVencimiento": "2026-12-01",
+        "descripcion": "Tabletas de paracetamol 500mg, caja x 20"
+      },
+      "estado": {
+        "id": "EM-001",
+        "estado": "refrigerado"
+      },
+      "categoria": {
+        "id": "CA-001",
+        "categoria": "Venta Libre",
+        "descripcion": "Medicamento sin receta"
+      },
+      "marca": {
+        "id": "MA-001",
+        "nombre": "Farmacos",
+        "paisOrigen": "Perú",
+        "descripcion": "Marca de confianza"
+      }
     },
     {
-      "nombre": "cetirizina",
-      "precio": 4,
-      "id": "6960"
+      "id": "P-0001",
+      "nombre": "Ibuprofeno 400mg franco",
+      "precio": 17,
+      "proveedor": {
+        "id": "PR-002",
+        "nombre": "Laboratorios Andes",
+        "telefono": "912345678",
+        "direccion": "Calle Farmacia 456"
+      },
+      "catidades": {
+        "id": "CT-002",
+        "catidad": 80,
+        "cantidadMinima": 15
+      },
+      "datosProductos": {
+        "id": "DP-002",
+        "fechaCreacion": "2025-12-02",
+        "fechaVencimiento": "2026-06-01",
+        "descripcion": "Tabletas de ibuprofeno 400mg, caja x 20"
+      },
+      "estado": {
+        "id": "EM-002",
+        "estado": "aire libre"
+      },
+      "categoria": {
+        "id": "CA-002",
+        "categoria": "Especialisado",
+        "descripcion": "Medicamento bajo prescripción médica"
+      },
+      "marca": {
+        "id": "MA-002",
+        "nombre": "Andes Labs",
+        "paisOrigen": "Perú",
+        "descripcion": "Laboratorio reconocido"
+      }
     },
     {
-      "id": "",
-      "nombre": "1",
-      "precio": 1
+      "id": "P-0002",
+      "nombre": "Vitamina C 500mg",
+      "precio": 20,
+      "proveedor": {
+        "id": "PR-003",
+        "nombre": "Vitaminas Perú",
+        "telefono": "987123456",
+        "direccion": "Av. Vitaminas 789"
+      },
+      "catidades": {
+        "id": "CT-003",
+        "catidad": 150,
+        "cantidadMinima": 30
+      },
+      "datosProductos": {
+        "id": "DP-003",
+        "fechaCreacion": "2025-12-03",
+        "fechaVencimiento": "2027-01-01",
+        "descripcion": "Cápsulas de vitamina C 500mg, frasco x 60"
+      },
+      "estado": {
+        "id": "EM-003",
+        "estado": "aire libre"
+      },
+      "categoria": {
+        "id": "CA-003",
+        "categoria": "Venta Libre",
+        "descripcion": "Suplemento alimenticio"
+      },
+      "marca": {
+        "id": "MA-003",
+        "nombre": "Vitaminas Perú",
+        "paisOrigen": "Perú",
+        "descripcion": "Marca de vitaminas"
+      }
+    },
+    {
+      "id": "P-0003",
+      "nombre": "Jarabe para la tos",
+      "precio": 15,
+      "proveedor": {
+        "id": "PR-004",
+        "nombre": "Jarabes y Cía",
+        "telefono": "912987654",
+        "direccion": "Calle Medicina 321"
+      },
+      "catidades": {
+        "id": "CT-004",
+        "catidad": 60,
+        "cantidadMinima": 10
+      },
+      "datosProductos": {
+        "id": "DP-004",
+        "fechaCreacion": "2025-12-04",
+        "fechaVencimiento": "2026-12-30",
+        "descripcion": "Jarabe para la tos, frasco 120ml"
+      },
+      "estado": {
+        "id": "EM-004",
+        "estado": "refrigerado"
+      },
+      "categoria": {
+        "id": "CA-004",
+        "categoria": "Venta Libre",
+        "descripcion": "Jarabe sin prescripción"
+      },
+      "marca": {
+        "id": "MA-004",
+        "nombre": "Jarabes Cía",
+        "paisOrigen": "Perú",
+        "descripcion": "Marca especializada en jarabes"
+      }
+    },
+    {
+      "id": "P-0004",
+      "nombre": "jari",
+      "precio": 23,
+      "proveedor": {
+        "nombre": "franco",
+        "telefono": "89898989",
+        "direccion": "carretera centrarl 23",
+        "id": "PROV-0000"
+      },
+      "catidades": {
+        "catidad": 1222,
+        "cantidadMinima": 12,
+        "id": "CT-0005"
+      },
+      "datosProductos": {
+        "fechaCreacion": "2025-12-01",
+        "fechaVencimiento": "2026-08-06",
+        "descripcion": "producto fragil",
+        "id": "DP-0005"
+      },
+      "estado": {
+        "estado": "refrigerado",
+        "id": "EM-0005"
+      },
+      "categoria": {
+        "categoria": "Especialisado",
+        "descripcion": "",
+        "id": "CA-0005"
+      },
+      "marca": {
+        "nombre": "peru puede ",
+        "paisOrigen": "colombia",
+        "descripcion": "fragil vidrio y specialisado",
+        "id": "MA-0005"
+      }
     }
   ],
   "clientes": [
     {
-      "id": "4663",
-      "nombre": "2",
-      "dni": "2"
+      "id": "C-0001",
+      "datosClientes": {
+        "id": "CD-0001",
+        "nombre": "Jorge",
+        "apellido": "Ramires",
+        "DNI": 72839451
+      },
+      "direccion": {
+        "id": "DI-0001",
+        "direccion": "Av. Los Pinos 345",
+        "referencia": "Frente al parque principal"
+      },
+      "telefono": {
+        "id": "CA-0001",
+        "numero": "987654321",
+        "correo": "jorge.ramirez@example.com"
+      }
+    },
+    {
+      "id": "C-0002",
+      "datosClientes": {
+        "id": "CD-0002",
+        "nombre": "María",
+        "apellido": "Torres",
+        "DNI": 71628394
+      },
+      "direccion": {
+        "id": "DI-0002",
+        "direccion": "Jr. Libertad 120",
+        "referencia": "Al costado de la bodega Don Lucho"
+      },
+      "telefono": {
+        "id": "CA-0002",
+        "numero": "945123678",
+        "correo": "maria.torres@example.com"
+      }
+    },
+    {
+      "id": "C-0003",
+      "datosClientes": {
+        "id": "CD-0003",
+        "nombre": "Luis",
+        "apellido": "Sánchez",
+        "DNI": 70839245
+      },
+      "direccion": {
+        "id": "DI-0003",
+        "direccion": "Calle Las Flores 802",
+        "referencia": "Tercer piso puerta negra"
+      },
+      "telefono": {
+        "id": "CA-0003",
+        "numero": "912348765",
+        "correo": "luis.sanchez@example.com"
+      }
+    },
+    {
+      "id": "C-0004",
+      "datosClientes": {
+        "id": "CD-0004",
+        "nombre": "Ana",
+        "apellido": "Gómez",
+        "DNI": 73582914
+      },
+      "direccion": {
+        "id": "DI-0004",
+        "direccion": "Mz B Lt 14 Urb. El Mirador",
+        "referencia": "A una cuadra del colegio San Juan"
+      },
+      "telefono": {
+        "id": "CA-0004",
+        "numero": "998231564",
+        "correo": "ana.gomez@example.com"
+      }
     }
   ],
   "ventas": [
     {
-      "id": "94e0",
-      "cliente": "2",
-      "producto": "2",
-      "cantidad": "2",
-      "fecha": "2025-11-23T16:19:11.765Z"
+      "id": "V-0001",
+      "cliente": "C-0001",
+      "fecha": "2025-12-06",
+      "productos": [
+        {
+          "productoId": "P-0001",
+          "cantidad": 2
+        },
+        {
+          "productoId": "P-0002",
+          "cantidad": 1
+        }
+      ],
+      "comentario": {
+        "id": "VC-0001",
+        "fecha": "2025-12-06",
+        "nota": "Cliente puntual y muy amable"
+      },
+      "cantidadPago": {
+        "id": "VP-0001",
+        "costogeneral": 150,
+        "costorIGV": 27,
+        "costoTotal": 177
+      }
     },
     {
-      "id": "",
-      "cliente": "1",
-      "producto": "1",
-      "cantidad": 1,
-      "fecha": "2025-11-23T18:21:10.066Z"
+      "id": "V-0002",
+      "cliente": "C-0002",
+      "fecha": "2025-12-05",
+      "productos": [
+        {
+          "productoId": "P-0003",
+          "cantidad": 5
+        },
+        {
+          "productoId": "P-0004",
+          "cantidad": 3
+        }
+      ],
+      "comentario": {
+        "id": "VC-0002",
+        "fecha": "2025-12-05",
+        "nota": "Pago retrasado, revisar historial"
+      },
+      "cantidadPago": {
+        "id": "VP-0002",
+        "costogeneral": 400,
+        "costorIGV": 72,
+        "costoTotal": 472
+      }
     },
     {
-      "id": "",
-      "cliente": "5",
-      "producto": "5",
-      "cantidad": 4,
-      "fecha": "2025-11-23T18:27:23.927Z"
+      "id": "V-0003",
+      "cliente": "C-0003",
+      "fecha": "2025-12-04",
+      "productos": [
+        {
+          "productoId": "P-0005",
+          "cantidad": 1
+        },
+        {
+          "productoId": "P-0006",
+          "cantidad": 2
+        },
+        {
+          "productoId": "P-0007",
+          "cantidad": 4
+        }
+      ],
+      "comentario": {
+        "id": "VC-0003",
+        "fecha": "2025-12-04",
+        "nota": "Cliente frecuente, excelente comunicación"
+      },
+      "cantidadPago": {
+        "id": "VP-0003",
+        "costogeneral": 250,
+        "costorIGV": 45,
+        "costoTotal": 295
+      }
     },
     {
-      "id": "36b1",
-      "cliente": "4",
-      "producto": "4",
-      "cantidad": 23,
-      "fecha": "2025-11-23T18:47:57.192Z"
+      "id": "V-0004",
+      "cliente": "C-0001",
+      "fecha": "2025-12-07T01:39:22.901Z",
+      "productos": [
+        {
+          "id": "P-0003",
+          "productoId": "P-0003",
+          "cantidad": 3
+        },
+        {
+          "id": "P-0002",
+          "productoId": "P-0002",
+          "cantidad": 6
+        }
+      ],
+      "comentario": {
+        "id": "VC-0004",
+        "fecha": "2025-12-07T01:39:22.901Z",
+        "nota": "Venta generada"
+      },
+      "cantidadPago": {
+        "id": "VP-0004",
+        "costogeneral": 165,
+        "costorIGV": 29.699999999999996,
+        "costoTotal": 194.7
+      }
+    },
+    {
+      "id": "V-0005",
+      "cliente": "C-0001",
+      "fecha": "2025-12-07T01:45:01.621Z",
+      "productos": [
+        {
+          "id": "P-0002",
+          "productoId": "P-0002",
+          "cantidad": 5
+        }
+      ],
+      "comentario": {
+        "id": "VC-0005",
+        "fecha": "2025-12-07T01:45:01.621Z",
+        "nota": "Venta generada"
+      },
+      "cantidadPago": {
+        "id": "VP-0005",
+        "costogeneral": 100,
+        "costorIGV": 18,
+        "costoTotal": 118
+      }
+    },
+    {
+      "id": "V-0006",
+      "cliente": "C-0001",
+      "fecha": "2025-12-07T16:47:29.882Z",
+      "productos": [
+        {
+          "id": "P-0000",
+          "productoId": "P-0000",
+          "cantidad": 7
+        },
+        {
+          "id": "P-0001",
+          "productoId": "P-0001",
+          "cantidad": 44
+        }
+      ],
+      "comentario": {
+        "id": "VC-0006",
+        "fecha": "2025-12-07T16:47:29.882Z",
+        "nota": "Venta generada"
+      },
+      "cantidadPago": {
+        "id": "VP-0006",
+        "costogeneral": 601.5,
+        "costorIGV": 108.27,
+        "costoTotal": 709.77
+      }
     }
   ]
 }

@@ -1,41 +1,12 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import type { Cliente } from "../../models/types";
+import { useClientes } from "../../hook/DatosClientes";
+import "../../styles/tablasGeneral/tablas.scss"
 
 function ClientesListado() {
-  const [clientes, setClientes] = useState<Cliente[]>([]);
+  const { eliminarCliente, Clientes } = useClientes();
   const navigate = useNavigate();
 
-  const cargar = async () => {
-    const res = await fetch("http://localhost:3001/clientes");
-    const data: Cliente[] = await res.json();
-    setClientes(data);
-  };
-
-  useEffect(() => {
-    cargar();
-  }, []);
-
-  const eliminar = async (id: number | string) => {
-    try {
-      const res = await fetch(
-        `http://localhost:3001/clientes/${String(id)}`,
-        { method: "DELETE" }
-      );
-
-      if (!res.ok) {
-        throw new Error(`Status: ${res.status}`);
-      }
-
-      alert("Cliente eliminado correctamente");
-      cargar();
-    } catch (error) {
-      alert("Error al eliminar");
-      console.error(error);
-    }
-  };
-
-  const editar = (id: number | string) => {
+  const editar = (id: string) => {
     navigate(`/clientes/editar/${id}`);
   };
 
@@ -47,20 +18,46 @@ function ClientesListado() {
         <thead>
           <tr>
             <th>ID</th>
-            <th>Nombre</th>
+            <th>Nombre Completo</th>
             <th>DNI</th>
+            <th>Dirección</th>
+            <th>Referencia</th>
+            <th>Teléfono</th>
+            <th>Correo</th>
+
             <th>Acciones</th>
           </tr>
         </thead>
+
         <tbody>
-          {clientes.map((c) => (
+          {Clientes.map((c) => (
             <tr key={c.id}>
               <td>{c.id}</td>
-              <td>{c.nombre}</td>
-              <td>{c.dni}</td>
+              <td>
+                {c.datosClientes.nombre} {c.datosClientes.apellido}
+              </td>
+              <td>{c.datosClientes.DNI}</td>
+              <td>{c.direccion.direccion}</td>
+              <td>{c.direccion.referencia || "—"}</td>
+              <td>{c.telefono.numero}</td>
+              <td>{c.telefono.correo}</td>
+
               <td>
                 <button onClick={() => editar(c.id)}>Editar</button>
-                <button onClick={() => eliminar(c.id)}>Eliminar</button>
+
+                <button
+                  onClick={() => {
+                    if (
+                      window.confirm(
+                        `¿Seguro que deseas eliminar al cliente ${c.datosClientes.nombre}?`
+                      )
+                    ) {
+                      eliminarCliente(c.id);
+                    }
+                  }}
+                >
+                  Eliminar
+                </button>
               </td>
             </tr>
           ))}

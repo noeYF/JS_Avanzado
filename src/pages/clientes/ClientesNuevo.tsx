@@ -1,56 +1,227 @@
 import { useState } from "react";
-import type { ClienteCreate } from "../../models/types";
+import type { ClienteCreate } from "../../models/typeClientes";
+import { useClientes } from "../../hook/DatosClientes";
+import { generarID } from "../../util/generarID";
+import "../../styles/generarNuevos/nuevoCliente.scss";
 
-function ClientesNuevo() {
+function ClienteNuevo() {
+  const { crearCliente, Clientes } = useClientes();
+
   const [cliente, setCliente] = useState<ClienteCreate>({
-    nombre: "",
-    dni: ""
+    datosClientes: {
+      nombre: "", // nombre del cliente vacío
+      apellido: "", // apellido vacío
+      DNI: 0, // DNI inicial como 0
+    },
+    direccion: {
+      direccion: "", // dirección vacía
+      referencia: "", // referencia opcional
+    },
+    telefono: {
+      numero: "", // número vacío
+      correo: "", // correo vacío
+    },
   });
-
-  const guardar = (e: React.FormEvent<HTMLFormElement>) => {
+  const guardar = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    fetch("http://localhost:3001/clientes", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(cliente)
-    });
+    const nuevoCliente = {
+      id: generarID("C", Clientes),
+      datosClientes: {
+        ...cliente.datosClientes,
+        id: generarID(
+          "CD",
+          Clientes.map((p) => p.datosClientes)
+        ),
+      },
+      direccion: {
+        ...cliente.direccion,
+        id: generarID(
+          "DI",
+          Clientes.map((p) => p.direccion)
+        ),
+      },
+      telefono: {
+        ...cliente.telefono,
+        id: generarID(
+          "CA",
+          Clientes.map((p) => p.telefono)
+        ),
+      },
+    };
 
+    await crearCliente(nuevoCliente);
+
+    alert("Clientes guardado");
+
+    // reset
     setCliente({
-      nombre: "",
-      dni: ""
+      datosClientes: {
+        nombre: "", // nombre del cliente vacío
+        apellido: "", // apellido vacío
+        DNI: 0, // DNI inicial como 0
+      },
+      direccion: {
+        direccion: "", // dirección vacía
+        referencia: "", // referencia opcional
+      },
+      telefono: {
+        numero: "", // número vacío
+        correo: "", // correo vacío
+      },
     });
-
-    alert("Cliente guardado");
   };
 
   return (
-    <div className="form-box">
-      <h2>Nuevo Cliente</h2>
+    <div className="nuevo-cliente">
+      <div className="form-nuevo-cliente">
+        <h2>Nuevo Cliente</h2>
+        <form onSubmit={guardar} className="contenido-cliente">
+          {/* DATOS DEL CLIENTE */}
 
-      <form onSubmit={guardar}>
-        <input
-          type="text"
-          placeholder="Nombre del cliente"
-          value={cliente.nombre}
-          onChange={(e) =>
-            setCliente({ ...cliente, nombre: e.target.value })
-          }
-        />
+          <div className="nombre">
+            <label>
+              <h6>Nombre</h6>
+              <input
+                type="text"
+                value={cliente.datosClientes.nombre}
+                onChange={(e) =>
+                  setCliente({
+                    ...cliente,
+                    datosClientes: {
+                      ...cliente.datosClientes,
+                      nombre: e.target.value,
+                    },
+                  })
+                }
+                required
+              />
+            </label>
+          </div>
+          <div className="apellido">
+            <label>
+              <h6>Apellido</h6>
+              <input
+                type="text"
+                value={cliente.datosClientes.apellido}
+                onChange={(e) =>
+                  setCliente({
+                    ...cliente,
+                    datosClientes: {
+                      ...cliente.datosClientes,
+                      apellido: e.target.value,
+                    },
+                  })
+                }
+                required
+              />
+            </label>
+          </div>
 
-        <input
-          type="text"
-          placeholder="DNI"
-          value={cliente.dni}
-          onChange={(e) =>
-            setCliente({ ...cliente, dni: e.target.value })
-          }
-        />
-
-        <button type="submit">Guardar</button>
-      </form>
+          <div className="DNI">
+            <label>
+              <h6>DNI</h6>
+              <input
+                type="number"
+                value={cliente.datosClientes.DNI}
+                onChange={(e) =>
+                  setCliente({
+                    ...cliente,
+                    datosClientes: {
+                      ...cliente.datosClientes,
+                      DNI: Number(e.target.value),
+                    },
+                  })
+                }
+                required
+              />
+            </label>
+          </div>
+          {/* DIRECCIÓN */}
+          <div className="direccion">
+            <label>
+              <h6>Dirección</h6>
+              <input
+                type="text"
+                value={cliente.direccion.direccion}
+                onChange={(e) =>
+                  setCliente({
+                    ...cliente,
+                    direccion: {
+                      ...cliente.direccion,
+                      direccion: e.target.value,
+                    },
+                  })
+                }
+                required
+              />
+            </label>
+          </div>
+          <div className="referencia">
+            <label>
+              <h6>Referencia</h6>
+              <input
+                type="text"
+                value={cliente.direccion.referencia}
+                onChange={(e) =>
+                  setCliente({
+                    ...cliente,
+                    direccion: {
+                      ...cliente.direccion,
+                      referencia: e.target.value,
+                    },
+                  })
+                }
+              />
+            </label>
+          </div>
+          {/* CANALES DE COMUNICACIÓN */}
+          <div className="num-tele">
+            <label>
+              <h6>Número de teléfono</h6>
+              <input
+                type="text"
+                value={cliente.telefono.numero}
+                onChange={(e) =>
+                  setCliente({
+                    ...cliente,
+                    telefono: {
+                      ...cliente.telefono,
+                      numero: e.target.value,
+                    },
+                  })
+                }
+                required
+              />
+            </label>
+          </div>
+          <div className="corre">
+            <label>
+              <h6>Correo electrónico</h6>
+              <input
+                type="email"
+                value={cliente.telefono.correo}
+                onChange={(e) =>
+                  setCliente({
+                    ...cliente,
+                    telefono: {
+                      ...cliente.telefono,
+                      correo: e.target.value,
+                    },
+                  })
+                }
+                required
+              />
+            </label>
+          </div>
+          {/* BOTÓN PARA GUARDAR */}
+          <div className="boton">
+            <button type="submit">Guardar</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
 
-export default ClientesNuevo;
+export default ClienteNuevo;

@@ -1,0 +1,19 @@
+@use "../layoutStyle/sidevarStyle";
+@use "../paletaColores";
+
+.layout-cliente {
+  display: flex;
+  height: 100vh;
+
+  .sidebar {
+    @extend .sidebar-base;
+    background-image: url("../../assets/layoutIMG/LayoutClientes-removebg-preview.png");
+  }
+
+  .main-content {
+    width: calc(100vw - 200px);
+    margin-left: 200px;
+    margin-top: 80px;
+    padding: 20px;
+  }
+}
